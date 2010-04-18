@@ -135,8 +135,8 @@ def symlink_current_release():
     #run('cd %(path)s; ln -s %(release)s releases/current' % {'path': env.path, 'release': env.release})
     with settings(hide('warnings', 'stderr'), warn_only = True):
         run('cd %(path)s; rm releases/previous; mv releases/current releases/previous' % {'path': env.path }) 
-	run('cd %(path)s; mkdir admin_media' % {'path': env.path })
-	run('cd %(path)s; ln -s /usr/local/lib/python2.6/dist-packages/django/contrib/admin/media/ admin_media' % {'path': env.path })
+	#run('cd %(path)s; mkdir admin_media' % {'path': env.path })
+	#run('cd %(path)s; ln -s /usr/local/lib/python2.6/dist-packages/django/contrib/admin/media/ admin_media' % {'path': env.path })
     run('cd %(path)s; ln -s %(release)s releases/current' % {'path': env.path, 'release': env.release})
 
 
@@ -145,7 +145,7 @@ def migrate():
     "Update the database"
     require('project_name')
     #run('cd %(path)/releases/current/%(project_name);  ../../../bin/python manage.py syncdb --noinput' % {'path': env.path, 'release': env.release,'project_name':env.project_name})
-    run('cd %(path)s/releases/current/%(project_name)s; python manage.py syncdb' % {'path': env.path,'project_name': env.project_name})
+    run('cd %(path)s/releases/current/%(project_name)s; python manage.py syncdb --noinput' % {'path': env.path,'project_name': env.project_name})
 
 def restart_webserver():
     "Restart the web server"
