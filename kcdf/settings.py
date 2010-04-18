@@ -10,8 +10,8 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'kcdf_website'             # Or path to database file if using sqlite3.
-DATABASE_USER = 'kcdfweb'             # Not used with sqlite3.
+DATABASE_NAME = 'kcdf_or_ke'             # Or path to database file if using sqlite3.
+DATABASE_USER = 'kcdf_db'             # Not used with sqlite3.
 DATABASE_PASSWORD = 'db01318kc76'         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.

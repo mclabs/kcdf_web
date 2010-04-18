@@ -12,7 +12,7 @@ env.project_domain = 'kcdf.or.ke' # Project domain
 def production():
     "Use the local virtual server"
     env.hosts = ['173.203.124.16']
-    env.path = '/home/kcdfweb/webapps/kcdf.web'
+    env.path = '/home/kcdfweb/webapps/kcdf.or.ke'
     env.user = 'kcdfweb'
     #env.password ='wb56829hef'
     env.virtualhost_path = "apache"
@@ -37,15 +37,17 @@ def setup():
     
     sudo('aptitude install -y python-setuptools')
     sudo('easy_install pip')
-    sudo('pip install virtualenv')
-    #sudo('aptitude install -y apache2')
-    #sudo('aptitude install -y libapache2-mod-wsgi')
+    #sudo('pip install virtualenv')
+    sudo('aptitude install -y apache2')
+    sudo('aptitude install -y libapache2-mod-wsgi')
     # we want rid of the defult apache config
     #sudo('cd /etc/apache2/sites-available/; a2dissite default;')
-    sudo('mkdir -p %(path)s; cd %(path)s; virtualenv --no-site-packages .'  % {'path': env.path})
+    #sudo('mkdir -p %(path)s; cd %(path)s; virtualenv --no-site-packages .'  % {'path': env.path})
+    sudo('mkdir -p %(path)s;'  % {'path': env.path})
+
     sudo('chown -R %(user)s:%(user)s %(path)s'  % {'user': env.user, 'path': env.path})
     run('cd %(path)s; mkdir releases; mkdir packages' % {'path': env.path})
-    #deploy()
+    deploy()
 
 def deploy():
     """
@@ -121,7 +123,9 @@ def install_site():
 def install_requirements():
     "Install the required packages from the requirements file using pip"
     require('release', provided_by=[deploy, setup])
-    run('cd %(path)s; pip install -E . -r ./releases/%(release)s/requirements.txt' % {'path': env.path, 'release': env.release})
+    #with cd('%(path)s;' % env):
+	#sudo('pip install -r ./releases/%(release)s/requirements.txt' % env)
+    run('cd %(path)s; sudo pip install -r ./releases/%(release)s/requirements.txt' % {'path': env.path, 'release': env.release})
 
 
 def symlink_current_release():
@@ -138,7 +142,7 @@ def migrate():
     "Update the database"
     require('project_name')
     #run('cd %(path)/releases/current/%(project_name);  ../../../bin/python manage.py syncdb --noinput' % {'path': env.path, 'release': env.release,'project_name':env.project_name})
-    run('cd %(path)s/releases/current/%(project_name)s; ../../../bin/python manage.py syncdb --noinput' % {'path': env.path,'project_name': env.project_name})
+    run('cd %(path)s/releases/current/%(project_name)s; python manage.py syncdb --noinput' % {'path': env.path,'project_name': env.project_name})
 
 def restart_webserver():
     "Restart the web server"

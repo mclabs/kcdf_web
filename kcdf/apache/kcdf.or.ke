@@ -2,17 +2,17 @@
 ServerAdmin johnwesonga@mclabs.it
 ServerName www.kcdf.or.ke
 ServerAlias kcdf.or.ke
-WSGIDaemonProcess kcdf.or.ke user=www-data group=www-data threads=25 python-path=/home/kcdfweb/webapps/kcdf.web/lib/python2.6/site-packages
+WSGIDaemonProcess kcdf.or.ke user=www-data group=www-data threads=25 
   
 WSGIProcessGroup kcdf.or.ke
-        WSGIScriptAlias / /home/kcdfweb/webapps/kcdf.web/releases/current/kcdf/apache/kcdf.wsgi
-        <Directory /home/kcdfweb/webapps/kcdf.web/releases/current/kcdf>
+        WSGIScriptAlias / /home/kcdfweb/webapps/kcdf.or.ke/releases/current/kcdf/apache/kcdf.wsgi
+        <Directory /home/kcdfweb/webapps/kcdf.or.ke/releases/current/kcdf>
             Order deny,allow
             Allow from all
         </Directory>
 
-       ErrorLog /home/kcdfweb/webapps/kcdf.web/releases/current/kcdf/logs/apache_error.log
+       ErrorLog /home/kcdfweb/webapps/kcdf.or.ke/releases/current/kcdf/logs/apache_error.log
        LogLevel warn
 
-        CustomLog /home/kcdfweb/webapps/kcdf.web/releases/current/kcdf/logs/apache_access.log combined
+        CustomLog /home/kcdfweb/webapps/kcdf.or.ke/releases/current/kcdf/logs/apache_access.log combined
     </VirtualHost>  

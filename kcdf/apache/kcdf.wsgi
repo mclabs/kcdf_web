@@ -1,12 +1,10 @@
-import os
-import sys
-import django.core.handlers.wsgi
-
-# put the Django project on sys.path
-root_path = os.path.abspath(os.path.dirname(__file__) + '../')
-sys.path.insert(0, os.path.join(root_path, 'kcdf'))
-sys.path.insert(0, root_path)
-
+import os, sys
+apache_configuration= os.path.dirname(__file__)
+project = os.path.dirname(apache_configuration)
+workspace = os.path.dirname(project)
+sys.path.append(workspace)
+sys.path.append('/usr/local/lib/python2.6/dist-packages/django/')
+sys.path.append('/home/kcdfweb/webapps/kcdf.or.ke/releases/current/kcdf')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'kcdf.settings'
-
+import django.core.handlers.wsgi
 application = django.core.handlers.wsgi.WSGIHandler()
