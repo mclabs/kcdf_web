@@ -142,7 +142,7 @@ def migrate():
     "Update the database"
     require('project_name')
     #run('cd %(path)/releases/current/%(project_name);  ../../../bin/python manage.py syncdb --noinput' % {'path': env.path, 'release': env.release,'project_name':env.project_name})
-    run('cd %(path)s/releases/current/%(project_name)s; python manage.py syncdb --noinput' % {'path': env.path,'project_name': env.project_name})
+    run('cd %(path)s/releases/current/%(project_name)s; python manage.py syncdb' % {'path': env.path,'project_name': env.project_name})
 
 def restart_webserver():
     "Restart the web server"
