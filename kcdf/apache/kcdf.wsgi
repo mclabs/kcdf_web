@@ -1,4 +1,6 @@
 import os, sys
+import os
+os.environ['PYTHON_EGG_CACHE'] = '/tmp'
 apache_configuration= os.path.dirname(__file__)
 project = os.path.dirname(apache_configuration)
 workspace = os.path.dirname(project)
