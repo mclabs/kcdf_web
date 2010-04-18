@@ -35,7 +35,7 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/home/kcdfweb/webapp/kcdf.or.ke/templates/'
+MEDIA_ROOT = '/home/kcdfweb/webapp/kcdf.or.ke/media/'
 
 
 
@@ -77,7 +77,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    'C:/www/django/templates/kcdf/',
+    '/home/kcdfweb/webapp/kcdf.or.ke/templates/',
 )
 
 INSTALLED_APPS = (
