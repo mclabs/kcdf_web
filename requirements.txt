@@ -1,0 +1,4 @@
+PIL
+django-tinymce
+django-tagging
+sorl-thumbnail
