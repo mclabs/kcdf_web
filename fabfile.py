@@ -65,6 +65,7 @@ def deploy():
     install_requirements()
     install_site()
     symlink_current_release()
+    symlink_admin_media()
     migrate()
     restart_webserver()
 
@@ -137,6 +138,12 @@ def symlink_current_release():
         run('cd %(path)s; rm releases/previous; mv releases/current releases/previous' % {'path': env.path }) 
     
     run('cd %(path)s; ln -s %(release)s releases/current' % {'path': env.path, 'release': env.release})
+
+def symlink_admin_media ():
+    require('project_name')
+    run('cd %(path)s/releases/current/%(project_name)s; mkdir admin_media' % {'path': env.path,'project_name': env.project_name})
+    run('cd %(path)s/releases/current/%(project_name)s; ln -s admin_media /usr/local/lib/python2.6/dist-packages/django/contrib/admin/media/ ' % {'path': env.path,'project_name': env.project_name})
+
 
 def migrate():
     "Update the database"

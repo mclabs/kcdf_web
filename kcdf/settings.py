@@ -35,7 +35,7 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/home/kcdfweb/templates/kcdf.website/'
+MEDIA_ROOT = '/home/kcdfweb/webapp/kcdf.or.ke/templates/'
 
 
 
