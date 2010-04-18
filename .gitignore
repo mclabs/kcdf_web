@@ -2,3 +2,4 @@ __version__.py
 *.pyc
 *.swp
 *.db
+*.tar
