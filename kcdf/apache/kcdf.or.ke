@@ -3,7 +3,7 @@ ServerAdmin johnwesonga@mclabs.it
 ServerName www.kcdf.or.ke
 ServerAlias kcdf.or.ke
 WSGIDaemonProcess kcdf.or.ke user=www-data group=www-data threads=25 
-  
+SetEnv PYTHON_EGG_CACHE /home/kcdfweb/tmp
 WSGIProcessGroup kcdf.or.ke
         WSGIScriptAlias / /home/kcdfweb/webapps/kcdf.or.ke/releases/current/kcdf/apache/kcdf.wsgi
         <Directory /home/kcdfweb/webapps/kcdf.or.ke/releases/current/kcdf>
