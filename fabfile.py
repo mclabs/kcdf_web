@@ -40,6 +40,7 @@ def setup():
     #sudo('pip install virtualenv')
     sudo('aptitude install -y apache2')
     sudo('aptitude install -y libapache2-mod-wsgi')
+
     # we want rid of the defult apache config
     #sudo('cd /etc/apache2/sites-available/; a2dissite default;')
     #sudo('mkdir -p %(path)s; cd %(path)s; virtualenv --no-site-packages .'  % {'path': env.path})
