@@ -95,4 +95,7 @@ INSTALLED_APPS = (
 
 #setting for django-tinymce
 TINYMCE_JS_URL=MEDIA_URL + '/site_media/js/tiny_mce/tiny_mce.js'
-TINYMCE_DEFAULT_CONFIG = {'theme': "advanced",}
+TINYMCE_DEFAULT_CONFIG = {'theme': "advanced",
+'plugins':"paste",
+'theme_advanced_toolbar_location' : "top"
+}
