@@ -69,6 +69,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+
 )
 
 ROOT_URLCONF = 'kcdf.urls'
@@ -88,6 +90,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.flatpages',
+    'django.contrib.sites',
     'kcdf.website',
 
     
