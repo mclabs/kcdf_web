@@ -51,7 +51,12 @@ class PageAdmin(admin.ModelAdmin):
 class ProgramAdmin(admin.ModelAdmin):
 	list_display = ('id','title','slug')
 	exclude=('slug',)
-	#prepopulated_fields = {"slug": ("title",)}
+	def formfield_for_dbfield(self, db_field, **kwargs):
+		field = super(ProgramAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+		if db_field.name == 'description':
+			return forms.CharField(widget=TinyMCE(
+			attrs={'cols': 80, 'rows': 30}))
+		return field
 	
 
 class ResourceAdmin(admin.ModelAdmin):

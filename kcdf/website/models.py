@@ -34,7 +34,7 @@ class Page(models.Model):
 
 class Program(models.Model):
 	title=models.CharField(max_length=160,help_text="title of the program")
-	description=models.TextField(help_text="Description of the program")
+	description=tinymce_models.HTMLField(help_text="Description of the program")
 	slug=models.SlugField(max_length=160,blank=True)
 
 	def __unicode__ (self):
@@ -74,7 +74,7 @@ class BaseResource(models.Model):
 	short_description=models.TextField(help_text="short description (160) characters",null=True)
 	long_description=tinymce_models.HTMLField(help_text="long description of the case study")
 	url=models.URLField(verify_exists=True,max_length=200,blank=True,null=True,help_text="website link if exists")
-	slug=models.SlugField(unique=True)
+	slug=models.SlugField(max_length=160,unique=True)
 	created_at=models.DateTimeField(auto_now_add=True)
 	tags = TagField()
 
