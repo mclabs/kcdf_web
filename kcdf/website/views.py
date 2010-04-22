@@ -22,6 +22,12 @@ def resources(request):
 	context_dict={'active_tab': 'resource-center',"resources":resources}
 	return render_to_response('website/resources.html',context_dict,context_instance=RequestContext(request));
 
+def resource_detail(request,slug):
+	resource = get_object_or_404(Resource, slug=slug)
+	context_dict={'active_tab': 'news',"resource":resource}
+	return render_to_response('website/resource_detail.html',context_dict,context_instance=RequestContext(request));
+
+
 def news(request):
 	news=News.objects.all().order_by("created_at")
 	context_dict={'active_tab': 'news',"news":news}
