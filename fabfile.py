@@ -151,3 +151,5 @@ def migrate():
 def restart_webserver():
     "Restart the web server"
     sudo('/etc/init.d/apache2 reload')
+
+

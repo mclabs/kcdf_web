@@ -1,4 +1,5 @@
 # Django settings for kcdf project.
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -103,3 +104,6 @@ TINYMCE_DEFAULT_CONFIG = {'theme': "advanced",
 'plugins':"paste",
 'theme_advanced_toolbar_location' : "top"
 }
+TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
+    'kcdf.website.context_processors.header_context',
+)

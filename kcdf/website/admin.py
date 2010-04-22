@@ -39,6 +39,7 @@ class EventsAdmin(admin.ModelAdmin):
 
 class PageAdmin(admin.ModelAdmin):
 	list_display = ('id','title','slug','parent')
+	list_editable={'title','parent'}
 	prepopulated_fields = {"slug": ("title",)}
 
 class ProgramAdmin(admin.ModelAdmin):
