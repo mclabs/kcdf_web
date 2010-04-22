@@ -1,5 +1,5 @@
 def header_context(request):
-    values = {'body_class': "bg-body-inner",}
+    values = {'body_class': "bg-body-home",}
     if request.path == "/program/shabaa/":
         ## Don't really use an if block, it's just nasty.
         values['body_class'] = "shabaa_masthead"
