@@ -11,6 +11,8 @@ urlpatterns=patterns('',
 
 urlpatterns+= patterns('django.contrib.flatpages.views',
     url(r'^rss/$', 'flatpage', {'url': '/rss/'}, name='rss'),
+    url(r'^donate/$', 'flatpage', {'url': '/donate/'}, name='donate'),
+
 )
 urlpatterns += patterns('kcdf.website.views',
 		(r'^$', 'index',{},'home'),
@@ -18,6 +20,6 @@ urlpatterns += patterns('kcdf.website.views',
 		(r'^program/(?P<slug>[^\.^/]+)/$', 'program_details',{},''),
 		(r'^resource-center/$', 'resources',{},'resource-center'),
 		(r'^partners/$', 'page',{},'partners'),
-		(r'^rss/$', 'page',{},'rss'),
+		(r'^page/(?P<slug>[^\.^/]+)/$', 'page',{},'rss'),
 		
 )

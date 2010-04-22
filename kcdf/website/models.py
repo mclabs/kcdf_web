@@ -3,6 +3,7 @@ from tinymce import models as tinymce_models
 from tagging.fields import TagField
 from sorl.thumbnail.fields import ThumbnailField
 from django.db.models import permalink
+from django.template.defaultfilters import slugify
 
 
 
@@ -19,23 +20,41 @@ class Page(models.Model):
 		verbose_name="Page"
 		verbose_name_plural="Pages"
 		
+	def get_absolute_url(self):
+		return "/page/%s/" % self.slug
+
+	def save (self):
+		self.slug = slugify(self.title)
+		super(Page,self).save()
+
+	
+
 		
 	
 
 class Program(models.Model):
 	title=models.CharField(max_length=160,help_text="title of the program")
 	description=models.TextField(help_text="Description of the program")
-	slug=models.SlugField(max_length=160)
+	slug=models.SlugField(max_length=160,blank=True)
 
 	def __unicode__ (self):
 		return self.title
+	
+	def save (self):
+		self.slug = slugify(self.title)
+		super(Program,self).save()
 
 	class Meta:
 		verbose_name="KCDF Program"
 		verbose_name_plural="KCDF Programs"
 
+
 	def get_absolute_url(self):
 		return "/program/%s/" % self.slug
+	
+	def save (self):
+		self.slug = slugify(self.title)
+		super(Program,self).save()
 		
 		
 
@@ -66,6 +85,10 @@ class BaseResource(models.Model):
 	def __unicode__ (self):
 		return self.title
 
+	def save (self):
+		self.slug = slugify(self.title)
+		super(BaseResource,self).save()
+
 
 class CaseStudy(BaseResource):
 	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True)
@@ -73,6 +96,9 @@ class CaseStudy(BaseResource):
 	class Meta:
 		verbose_name="KCDF Case Study"
 		verbose_name_plural="KCDF Case Studies"
+
+	def get_absolute_url(self):
+		return "/case-study/%s/" % self.slug
 
 	
 
@@ -84,15 +110,22 @@ class Resource(BaseResource):
 		verbose_name="KCDF Resource"
 		verbose_name_plural="KCDF Resources"
 
+	def get_absolute_url(self):
+		return "/resource/%s/" % self.slug
+
+
 
 
 class News(BaseResource):
 	news_file=models.FileField(upload_to='news/%Y/%m/%d',blank=True,null=True)
+	
 
 	class Meta:
 		verbose_name="KCDF News"
 		verbose_name_plural="KCDF News"
 
+	def get_absolute_url(self):
+		return "/news/%s" % self.slug
 
 		
 
@@ -106,6 +139,10 @@ class Events(BaseResource):
 		verbose_name="KCDF Event"
 		verbose_name_plural="KCDF Events"
 
+	def get_absolute_url(self):
+		return "/events/%s/" % self.slug
+
+
 class Headline(models.Model):
 	title=models.CharField(max_length=100)
 	photo=models.ImageField(upload_to='headlines/%Y/%m/%d')
@@ -118,6 +155,9 @@ class Headline(models.Model):
 		verbose_name="Home Page Headline"
 		verbose_name_plural="Home Page Headlines"
 
+
+
+	
 
 '''Add models here for SMS data which will be populated via web hooks'''
 		

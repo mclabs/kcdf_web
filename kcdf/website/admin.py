@@ -15,11 +15,11 @@ class TinyMCEFlatPageAdmin(FlatPageAdmin):
                 mce_attrs={'external_link_list_url': reverse('tinymce.views.flatpages_link_list')},
             ))
         return super(TinyMCEFlatPageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+
 	
 class NewsAdmin(admin.ModelAdmin):
-	prepopulated_fields = {"slug": ("title",)}
 	list_display = ('id','title','slug')
-
+	exclude=('slug',)
 	search_fields = ['id', 'title']
 	search_fields_verbose = ['ID', 'Title']
 
@@ -30,7 +30,7 @@ class CaseStudyAdmin(admin.ModelAdmin):
 	list_display = ('id','title','slug')
 
 class NewsAdmin(admin.ModelAdmin):
-	prepopulated_fields = {"slug": ("title",)}
+	exclude=('slug',)
 	list_display = ('id','title','slug','tags')
 
 class EventsAdmin(admin.ModelAdmin):
@@ -39,16 +39,25 @@ class EventsAdmin(admin.ModelAdmin):
 
 class PageAdmin(admin.ModelAdmin):
 	list_display = ('id','title','slug','parent')
-	list_editable={'title','parent'}
-	prepopulated_fields = {"slug": ("title",)}
+	exclude=('slug',)
+	def formfield_for_dbfield(self, db_field, **kwargs):
+		field = super(PageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+		if db_field.name == 'content':
+			return forms.CharField(widget=TinyMCE(
+			attrs={'cols': 80, 'rows': 30}))
+		return field
+
 
 class ProgramAdmin(admin.ModelAdmin):
 	list_display = ('id','title','slug')
-	prepopulated_fields = {"slug": ("title",)}
+	exclude=('slug',)
+	#prepopulated_fields = {"slug": ("title",)}
+	
 
 class ResourceAdmin(admin.ModelAdmin):
 	list_display = ('id','title','slug')
 	prepopulated_fields = {"slug": ("title",)}
+
 
 admin.site.register(Headline)
 
@@ -61,4 +70,3 @@ admin.site.register(Events,EventsAdmin)
 admin.site.register(Page,PageAdmin)
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, TinyMCEFlatPageAdmin)
-
