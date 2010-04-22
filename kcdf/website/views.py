@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
-from kcdf.website.models import News,Program,ResourceType,Resource,Page
+from kcdf.website.models import News,Program,ResourceType,Resource,Page,CaseStudy
 from django.views.generic import list_detail
 from django.template import RequestContext
 
@@ -22,9 +22,23 @@ def resources(request):
 	context_dict={'active_tab': 'resource-center',"resources":resources}
 	return render_to_response('website/resources.html',context_dict,context_instance=RequestContext(request));
 
-def case_studies (request):
+def news(request):
 	news=News.objects.all().order_by("created_at")
-	return render_to_response('website/index.html',context_instance=RequestContext(request));
+	context_dict={'active_tab': 'news',"news":news}
+	return render_to_response('website/news.html',context_dict,context_instance=RequestContext(request));
+
+def news_detail(request,slug):
+	news = get_object_or_404(News, slug=slug)
+	context_dict={'active_tab': 'news',"news":news}
+	return render_to_response('website/news_detail.html',context_dict,context_instance=RequestContext(request));
+
+
+
+
+def case_studies (request):
+	cases=CaseStudy.objects.all().order_by("created_at")
+	context_dict={'active_tab': 'case-studies',"cases":cases}
+	return render_to_response('website/casestudies.html',context_dict,context_instance=RequestContext(request));
 
 def programs(request):
 	programs=Program.objects.all()

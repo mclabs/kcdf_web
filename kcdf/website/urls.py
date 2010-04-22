@@ -1,5 +1,12 @@
 from django.conf.urls.defaults import *
 from website.feeds import LatestNews
+from website.models import News,Program
+
+
+info_dict = {
+    'queryset': Program.objects.all(),
+}
+
 
 feeds = {
     'news': LatestNews,
@@ -24,5 +31,8 @@ urlpatterns += patterns('kcdf.website.views',
 		(r'^partners/$', 'page',{},'partners'),
 		(r'^page/(?P<slug>[^\.^/]+)/$', 'page',{},'page'),
 		(r'^case-studies/$', 'case_studies',{},'case-studies'),
-		
+		(r'^page/(?P<slug>[^\.^/]+)/$', 'page',{},'page'),
+		(r'^news/(?P<slug>[^\.^/]+)/$', 'news_detail',{},'news'),
+		(r'^news/$', 'news',{},'news'),
+
 )
