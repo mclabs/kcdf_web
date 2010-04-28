@@ -1,6 +1,8 @@
 from django.conf.urls.defaults import *
 from website.feeds import LatestNews
 from website.models import News,Program
+from django.contrib import admin
+admin.autodiscover()
 
 
 info_dict = {
@@ -14,6 +16,7 @@ feeds = {
 urlpatterns=patterns('',
 		(r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
 		{'feed_dict': feeds}),
+		(r'^admin/', include(admin.site.urls)),
 	)
 
 urlpatterns+= patterns('django.contrib.flatpages.views',
