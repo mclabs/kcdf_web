@@ -10,9 +10,15 @@ def header_context(request):
         values['body_class'] = "bg-body-inner"
     if re.search("/program/arts",request.path):
         ## Don't really use an if block, it's just nasty.
-        values['body_class'] = "bg-body-inner"
+        values['body_class'] = "bg-body-home"
     if re.search("/program/girl",request.path):
         ## Don't really use an if block, it's just nasty.
         values['body_class'] = "girl-child_masthead"
+    if re.search("/program/education",request.path):
+        ## Don't really use an if block, it's just nasty.
+        values['body_class'] = "masthead-education"
+    if re.search("/program/early",request.path):
+        ## Don't really use an if block, it's just nasty.
+        values['body_class'] = "masthead-ECD"
 
     return values
