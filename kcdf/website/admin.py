@@ -87,6 +87,12 @@ class ProgramAdmin(admin.ModelAdmin):
 class ResourceAdmin(admin.ModelAdmin):
 	list_display = ('id','title','slug')
 	exclude=('slug',)
+	def formfield_for_dbfield(self, db_field, **kwargs):
+		field = super(ResourceAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+		if db_field.name == 'long_description':
+			return forms.CharField(widget=TinyMCE(
+			attrs={'cols': 80, 'rows': 30}))
+		return field
 
 
 admin.site.register(Headline)
