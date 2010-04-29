@@ -23,7 +23,7 @@ class NewsAdmin(admin.ModelAdmin):
 	search_fields = ['id', 'title']
 	search_fields_verbose = ['ID', 'Title']
 	def formfield_for_dbfield(self, db_field, **kwargs):
-		field = super(PageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+		field = super(NewsAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 		if db_field.name == 'long_description':
 			return forms.CharField(widget=TinyMCE(
 			attrs={'cols': 80, 'rows': 30}))
@@ -35,7 +35,7 @@ class CaseStudyAdmin(admin.ModelAdmin):
 	exclude=('slug',)
 	list_display = ('id','title','slug')
 	def formfield_for_dbfield(self, db_field, **kwargs):
-		field = super(PageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+		field = super(CaseStudyAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 		if db_field.name == 'long_description':
 			return forms.CharField(widget=TinyMCE(
 			attrs={'cols': 80, 'rows': 30}))
@@ -45,7 +45,7 @@ class NewsAdmin(admin.ModelAdmin):
 	exclude=('slug',)
 	list_display = ('id','title','slug','tags')
 	def formfield_for_dbfield(self, db_field, **kwargs):
-		field = super(PageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+		field = super(NewsAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 		if db_field.name == 'long_description':
 			return forms.CharField(widget=TinyMCE(
 			attrs={'cols': 80, 'rows': 30}))
@@ -55,7 +55,7 @@ class EventsAdmin(admin.ModelAdmin):
 	exclude=('slug',)
 	list_display = ('id','title','slug')
 	def formfield_for_dbfield(self, db_field, **kwargs):
-		field = super(PageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+		field = super(EventsAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 		if db_field.name == 'long_description':
 			return forms.CharField(widget=TinyMCE(
 			attrs={'cols': 80, 'rows': 30}))
