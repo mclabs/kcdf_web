@@ -66,6 +66,12 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.load_template_source',
 )
 
+HOST_MIDDLEWARE_URLCONF_MAP={
+			    'kcdf.or.ke','kcdf.website.urls',
+			    'ustawi.kcdf.or.ke','kcdf.ustawi.urls',
+}
+
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -75,10 +81,6 @@ MIDDLEWARE_CLASSES = (
 
 )
 
-HOST_MIDDLEWARE_URLCONF_MAP=(
-			    'kcdf.or.ke','kcdf.website.urls',
-			    'ustawi.kcdf.or.ke','kcdf.ustawi.urls',
-)
 
 ROOT_URLCONF = 'kcdf.urls'
 
