@@ -69,7 +69,7 @@ TEMPLATE_LOADERS = (
 HOST_MIDDLEWARE_URLCONF_MAP={
 			    "kcdf.or.ke":"kcdf.website.urls",
 			    "ustawi.kcdf.or.ke":"kcdf.ustawi.urls",
-			    "shabaa.kcdf.or.ke":"kcdf.shabaa.urls",
+			    #"shabaa.kcdf.or.ke":"kcdf.shabaa.urls",
 
 }
 
@@ -117,3 +117,4 @@ TINYMCE_DEFAULT_CONFIG = {'theme': "advanced",
 TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
     'kcdf.website.context_processors.header_context',
 )
+THUMBNAIL_EXTENSION = 'png'
