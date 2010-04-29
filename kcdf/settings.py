@@ -69,6 +69,8 @@ TEMPLATE_LOADERS = (
 HOST_MIDDLEWARE_URLCONF_MAP={
 			    "kcdf.or.ke":"kcdf.website.urls",
 			    "ustawi.kcdf.or.ke":"kcdf.ustawi.urls",
+			    "shabaa.kcdf.or.ke":"kcdf.shabaa.urls",
+
 }
 
 
