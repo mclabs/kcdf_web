@@ -150,10 +150,11 @@ class Headline(models.Model):
         ('1', 'Active'),
         ('0', 'Inactive'),
 	)
-	title=models.CharField(max_length=100)
+	title=models.CharField(max_length=255)
 	snippet=models.TextField(help_text="short snippet (50) characters")
-	photo=models.ImageField(upload_to='headlines/%Y/%m/%d',help_text="Supported file format is PNG only!!")
-	thumbnail=ThumbnailField(upload_to='headlines/thumbnails/%Y/%m/%d',size=(69, 39),help_text="Supported file format is PNG only!!")
+	photo=models.ImageField("Large Image",upload_to='headlines/%Y/%m/%d',help_text="Supported file format is PNG only!!")
+	slug=models.SlugField(max_length=255,unique=True)
+	thumbnail=ThumbnailField("Small Image",upload_to='headlines/thumbnails/%Y/%m/%d',size=(69, 39),help_text="Supported file format is PNG only!!")
 	status=models.CharField(max_length=1,choices=STATUS)
 	def __unicode__ (self):
 		return self.title
@@ -161,8 +162,17 @@ class Headline(models.Model):
 	class Meta:
 		verbose_name="Home Page Headline"
 		verbose_name_plural="Home Page Headlines"
+	
+		
+	def save (self):
+		self.slug = slugify(self.title)
+		super(Headline,self).save()
 
-
+	def get_thumbnail(self):
+		return self.thumbnail
+		
+	def get_large_image(self):
+		return self.photo
 
 	
 

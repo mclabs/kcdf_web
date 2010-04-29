@@ -95,8 +95,11 @@ class ResourceAdmin(admin.ModelAdmin):
 		return field
 
 
-admin.site.register(Headline)
+class HeadlineAdmin(admin.ModelAdmin):
+	list_display = ('id','title','slug')
+	exclude=('slug',)
 
+admin.site.register(Headline,HeadlineAdmin)
 admin.site.register(Program,ProgramAdmin)
 admin.site.register(Resource,ResourceAdmin)
 admin.site.register(ResourceType)
