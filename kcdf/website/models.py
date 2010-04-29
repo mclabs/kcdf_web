@@ -11,7 +11,7 @@ class Page(models.Model):
 	title=models.CharField(max_length=160,help_text="title of the page e.g. About KCDF")
 	content=tinymce_models.HTMLField()
 	parent=models.ForeignKey('self',related_name="sub_pages", null=True, blank=True)
-	slug=models.SlugField(max_length=160,unique=True,null=True,blank=True)
+	slug=models.SlugField(max_length=255,unique=True,null=True,blank=True)
 
 	def __unicode__ (self):
 		return self.title
@@ -35,7 +35,7 @@ class Page(models.Model):
 class Program(models.Model):
 	title=models.CharField(max_length=160,help_text="title of the program")
 	description=tinymce_models.HTMLField(help_text="Description of the program")
-	slug=models.SlugField(max_length=160,blank=True)
+	slug=models.SlugField(max_length=255,blank=True)
 
 	def __unicode__ (self):
 		return self.title
@@ -74,7 +74,7 @@ class BaseResource(models.Model):
 	short_description=models.TextField(help_text="short description (160) characters",null=True)
 	long_description=tinymce_models.HTMLField(help_text="long description of the case study")
 	url=models.URLField(verify_exists=True,max_length=200,blank=True,null=True,help_text="website link if exists")
-	slug=models.SlugField(max_length=160,unique=True)
+	slug=models.SlugField(max_length=255,unique=True)
 	created_at=models.DateTimeField(auto_now_add=True)
 	tags = TagField()
 
@@ -105,6 +105,7 @@ class CaseStudy(BaseResource):
 class Resource(BaseResource):
 	resource_type=models.ForeignKey(ResourceType,db_index=True)
 	resource_file=models.FileField(upload_to='resource/%Y/%m/%d',blank=True,null=True)
+	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True)
 
 	class Meta:
 		verbose_name="KCDF Resource"
@@ -118,7 +119,7 @@ class Resource(BaseResource):
 
 class News(BaseResource):
 	news_file=models.FileField(upload_to='news/%Y/%m/%d',blank=True,null=True)
-	
+	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True)
 
 	class Meta:
 		verbose_name="KCDF News"
@@ -131,6 +132,7 @@ class News(BaseResource):
 
 class Events(BaseResource):
 	event_doc=models.FileField(upload_to='events/%Y/%m/%d',blank=True,null=True)
+	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True)
 
 	def __unicode__ (self):
 		return self.title

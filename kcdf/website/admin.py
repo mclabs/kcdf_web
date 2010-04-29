@@ -26,7 +26,7 @@ class NewsAdmin(admin.ModelAdmin):
 		
 
 class CaseStudyAdmin(admin.ModelAdmin):
-	prepopulated_fields = {"slug": ("title",)}
+	exclude=('slug',)
 	list_display = ('id','title','slug')
 
 class NewsAdmin(admin.ModelAdmin):
@@ -34,7 +34,7 @@ class NewsAdmin(admin.ModelAdmin):
 	list_display = ('id','title','slug','tags')
 
 class EventsAdmin(admin.ModelAdmin):
-	prepopulated_fields = {"slug": ("title",)}
+	exclude=('slug',)
 	list_display = ('id','title','slug')
 
 class PageAdmin(admin.ModelAdmin):
@@ -61,7 +61,7 @@ class ProgramAdmin(admin.ModelAdmin):
 
 class ResourceAdmin(admin.ModelAdmin):
 	list_display = ('id','title','slug')
-	prepopulated_fields = {"slug": ("title",)}
+	exclude=('slug',)
 
 
 admin.site.register(Headline)
