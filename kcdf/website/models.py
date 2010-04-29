@@ -146,10 +146,15 @@ class Events(BaseResource):
 
 
 class Headline(models.Model):
+	STATUS=(
+        ('1', 'Active'),
+        ('0', 'Inactive'),
+	)
 	title=models.CharField(max_length=100)
-	photo=models.ImageField(upload_to='headlines/%Y/%m/%d')
-	thumbnail=ThumbnailField(upload_to='headlines/thumbnails/%Y/%m/%d',size=(69, 39))
-	
+	snippet=models.TextField(help_text="short snippet (50) characters")
+	photo=models.ImageField(upload_to='headlines/%Y/%m/%d',help_text="Supported file format is PNG only!!")
+	thumbnail=ThumbnailField(upload_to='headlines/thumbnails/%Y/%m/%d',size=(69, 39),help_text="Supported file format is PNG only!!")
+	status=models.CharField(max_length=1,choices=STATUS)
 	def __unicode__ (self):
 		return self.title
 
