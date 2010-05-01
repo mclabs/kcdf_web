@@ -17,6 +17,8 @@ urlpatterns=patterns('',
 		(r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
 		{'feed_dict': feeds}),
 		(r'^admin/', include(admin.site.urls)),
+		(r'^admin/filebrowser/', include('filebrowser.urls')),
+
 	)
 
 urlpatterns+= patterns('django.contrib.flatpages.views',
