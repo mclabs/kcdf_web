@@ -95,6 +95,7 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'django.contrib.auth',
+    'filebrowser',
     'tinymce',
     'tagging',
     'sorl.thumbnail',
