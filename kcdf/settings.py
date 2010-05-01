@@ -139,6 +139,8 @@ TINYMCE_DEFAULT_CONFIG = {
     'file_browser_callback': "djangoFileBrowser",
     'relative_urls': False,
 }
+TINYMCE_FILEBROWSER = True
+TINYMCE_COMPRESSOR = False
 
 TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
     'kcdf.website.context_processors.header_context',
