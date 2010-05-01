@@ -43,7 +43,7 @@ MEDIA_ROOT = '/home/kcdfweb/webapps/kcdf.or.ke/media/'
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/site_media/'
 
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
@@ -109,11 +109,36 @@ INSTALLED_APPS = (
 )
 
 #setting for django-tinymce
-TINYMCE_JS_URL=MEDIA_URL + '/site_media/js/tiny_mce/tiny_mce.js'
-TINYMCE_DEFAULT_CONFIG = {'theme': "advanced",
-'plugins':"paste",
-'theme_advanced_toolbar_location' : "top"
+TINYMCE_JS_URL=MEDIA_URL + 'js/tiny_mce/tiny_mce.js'
+TINYMCE_JS_ROOT=MEDIA_ROOT + 'js/tiny_mce'
+
+TINYMCE_DEFAULT_CONFIG = {
+
+    'mode': "textareas",
+    'theme': "advanced",
+    'language': "en",
+    'skin': "o2k7",
+    'dialog_type': "modal",
+    'object_resizing': True,
+    'cleanup_on_startup': True,
+    'forced_root_block': "p",
+    'remove_trailing_nbsp': True,
+    'theme_advanced_toolbar_location': "top",
+    'theme_advanced_toolbar_align': "left",
+    'theme_advanced_statusbar_location': "none",
+    'theme_advanced_buttons1':
+"formatselect,styleselect,bold,italic,underline,bullist,numlist,undo,redo,link,unlink,image,code,template,visualchars,fullscreen,pasteword,media,search,replace,charmap",
+    'theme_advanced_buttons2': "",
+    'theme_advanced_buttons3': "",
+    'theme_advanced_path': False,
+    'theme_advanced_blockformats': "p,h2,h3,h4,div,code,pre",
+    'plugins':
+"advimage,advlink,fullscreen,visualchars,paste,media,template,searchreplace,table",
+    'advimage_update_dimensions_onchange': True,
+    'file_browser_callback': "djangoFileBrowser",
+    'relative_urls': False,
 }
+
 TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
     'kcdf.website.context_processors.header_context',
 )

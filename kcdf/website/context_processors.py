@@ -2,7 +2,7 @@ import re
 def header_context(request):
     values = {'body_class': "bg-body-home",}
     #if request.path == "/program/shabaa/":
-    if re.search("/program/shabaa",request.path):
+    if re.search("/program/youth",request.path):
         ## Don't really use an if block, it's just nasty.
         values['body_class'] = "shabaa_masthead"
     if re.search("/program/ustawi",request.path):
@@ -11,7 +11,7 @@ def header_context(request):
     if re.search("/program/arts",request.path):
         ## Don't really use an if block, it's just nasty.
         values['body_class'] = "bg-body-home"
-    if re.search("/program/girl",request.path):
+    if re.search("/program/the-girl",request.path):
         ## Don't really use an if block, it's just nasty.
         values['body_class'] = "girl-child_masthead"
     if re.search("/program/education",request.path):
