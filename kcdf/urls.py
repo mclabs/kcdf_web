@@ -14,6 +14,8 @@ urlpatterns = patterns('',
     #(r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     (r'^tinymce/', include('tinymce.urls')),
     (r'^', include('website.urls')),
+    (r'^', include('ustawi.urls')),
+    (r'^admin/filebrowser/', include('filebrowser.urls')),
     # Example:
     # (r'^kcdf/', include('kcdf.foo.urls')),
 
