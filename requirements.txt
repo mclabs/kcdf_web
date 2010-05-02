@@ -3,3 +3,4 @@ django-tinymce
 django-tagging
 sorl-thumbnail
 python-twitter
+grappelli
