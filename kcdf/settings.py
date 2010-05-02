@@ -99,6 +99,7 @@ INSTALLED_APPS = (
     'tinymce',
     'tagging',
     'sorl.thumbnail',
+    'django_static',
     'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
