@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     (r'^tinymce/', include('tinymce.urls')),
     (r'^', include('website.urls')),
     (r'^', include('ustawi.urls')),
+    (r'^grappelli/', include('grappelli.urls')),
     (r'^admin/filebrowser/', include('filebrowser.urls')),
     # Example:
     # (r'^kcdf/', include('kcdf.foo.urls')),

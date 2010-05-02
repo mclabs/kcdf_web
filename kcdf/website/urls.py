@@ -19,6 +19,8 @@ urlpatterns=patterns('',
 		(r'^admin/', include(admin.site.urls)),
 		(r'^admin/filebrowser/', include('filebrowser.urls')),
 		(r'^tinymce/', include('tinymce.urls')),
+		(r'^grappelli/', include('grappelli.urls')),
+
 
 	)
 

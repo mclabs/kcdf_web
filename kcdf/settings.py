@@ -100,6 +100,7 @@ INSTALLED_APPS = (
     'tagging',
     'sorl.thumbnail',
     'django_static',
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
