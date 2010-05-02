@@ -144,5 +144,7 @@ TINYMCE_COMPRESSOR = False
 
 TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
     'kcdf.website.context_processors.header_context',
+    'kcdf.website.context_processors.media_url',
+
 )
 THUMBNAIL_EXTENSION = 'png'
