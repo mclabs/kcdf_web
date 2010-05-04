@@ -1,7 +1,7 @@
 # Django settings for kcdf project.
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -109,6 +109,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.sites',
     'kcdf.website',
+
 
     
 )

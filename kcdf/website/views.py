@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
-from kcdf.website.models import News,Program,ResourceType,Resource,Page,CaseStudy
+from kcdf.website.models import News,Program,ResourceType,Resource,Page,CaseStudy,Events
 from django.views.generic import list_detail
 from django.template import RequestContext
 
@@ -39,6 +39,15 @@ def news_detail(request,slug):
 	context_dict={'active_tab': 'news',"news":news}
 	return render_to_response('website/news_detail.html',context_dict,context_instance=RequestContext(request));
 
+def events(request):
+	events=Events.objects.all().order_by("-created_at")
+	context_dict={'active_tab': 'events',"events":events}
+	return render_to_response('website/events.html',context_dict,context_instance=RequestContext(request));
+
+def events_detail(request,slug):
+	events = get_object_or_404(Evenrs, slug=slug)
+	context_dict={'active_tab': 'events',"events":events}
+	return render_to_response('website/events_detail.html',context_dict,context_instance=RequestContext(request));
 
 
 
