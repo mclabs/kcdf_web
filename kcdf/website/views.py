@@ -3,13 +3,15 @@ from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
-from kcdf.website.models import News,Program,ResourceType,Resource,Page,CaseStudy,Events
+from kcdf.website.models import News,Program,ResourceType,Resource,Page,CaseStudy,Events,Headline
 from django.views.generic import list_detail
 from django.template import RequestContext
 
 def index (request):
 	news=News.objects.all().order_by("-created_at")[:4]
-	return render_to_response('website/index.html',{"news":news},context_instance=RequestContext(request));
+	headlines=Headline.objects.all().filter(status=1).order_by("-id")[:5]
+	context_dict={"news":news,"headlines":headlines}
+	return render_to_response('website/index.html',context_dict,context_instance=RequestContext(request));
 	
 def page (request,slug):
 	page = get_object_or_404(Page, slug=slug)
