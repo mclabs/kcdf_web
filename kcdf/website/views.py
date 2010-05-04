@@ -9,8 +9,7 @@ from django.template import RequestContext
 
 def index (request):
 	news=News.objects.all().order_by("-created_at")[:4]
-	headlines=Headline.objects.all().filter(status=1).order_by("-id")[:5]
-	context_dict={"news":news,"headlines":headlines}
+	context_dict={"news":news}
 	return render_to_response('website/index.html',context_dict,context_instance=RequestContext(request));
 	
 def page (request,slug):
