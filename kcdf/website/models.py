@@ -156,7 +156,7 @@ class Headline(models.Model):
 	photo=ThumbnailField("Large Image",upload_to='headlines/%Y/%m/%d',size=(500, 250),help_text="Supported file format is PNG only!!. Image dimensions 400x250")
 	slug=models.SlugField(max_length=255,unique=True)
 	thumbnail=ThumbnailField("Small Image",upload_to='headlines/thumbnails/%Y/%m/%d',size=(69, 39),help_text="Supported file format is PNG only!!")
-	status=models.CharField("Headline Status",max_length=1,choices=STATUS,help_text="Set whether this is the active headline")
+	status=models.CharField("Headline Status",max_length=1,default='Active',choices=STATUS,help_text="Set whether this is the active headline")
 	def __unicode__ (self):
 		return self.title
 
