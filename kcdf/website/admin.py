@@ -86,6 +86,7 @@ class ResourceAdmin(admin.ModelAdmin):
 
 class HeadlineAdmin(admin.ModelAdmin):
 	list_display = ('id','title','slug')
+	form = AdminImageForm
 	exclude=('slug',)
 
 admin.site.register(Headline,HeadlineAdmin)
