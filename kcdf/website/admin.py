@@ -1,5 +1,6 @@
 from django.contrib import admin
 from website.models import *
+from website.forms import AdminImageForm
 
 from django import forms
 from django.core.urlresolvers import reverse
@@ -96,6 +97,7 @@ class ResourceAdmin(admin.ModelAdmin):
 
 
 class HeadlineAdmin(admin.ModelAdmin):
+	form = AdminImageForm
 	list_display = ('id','title','slug')
 	exclude=('slug',)
 
