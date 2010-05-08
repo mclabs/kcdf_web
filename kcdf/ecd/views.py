@@ -15,6 +15,12 @@ def index (request):
 	context_dict={"news":news,"events":events,"cases":cases}
 	return render_to_response('ecd/index.html',context_dict,context_instance=RequestContext(request));
 
+def page (request,slug=""):
+	program=Program.objects.get(slug__contains='childhood')
+	context_dict={'active_tab': 'page',"program":program}
+	return render_to_response('website/page.html',context_dict,context_instance=RequestContext(request));
+
+
 def resources(request):
 	p=Program.objects.get(slug__contains='childhood')
 	resources=Resource.objects.filter(program=p).order_by("-created_at")

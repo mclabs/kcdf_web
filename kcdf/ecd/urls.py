@@ -22,6 +22,7 @@ urlpatterns+=patterns('ecd.views',
 		(r'^resource-center/$', 'resources',{},'resource-center'),
 		(r'^events/(?P<slug>[^\.^/]+)/$', 'events_detail',{},'events'),
 		(r'^events/$', 'events',{},'events'),
+		(r'^page/about-ecd/$', 'page',{},'about-ecd'),
 
 
 )
