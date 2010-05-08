@@ -18,23 +18,12 @@ class TinyMCEFlatPageAdmin(FlatPageAdmin):
         return super(TinyMCEFlatPageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 
 	
-class NewsAdmin(admin.ModelAdmin):
-	list_display = ('id','title','slug')
-	exclude=('slug',)
-	search_fields = ['id', 'title']
-	search_fields_verbose = ['ID', 'Title']
-	def formfield_for_dbfield(self, db_field, **kwargs):
-		field = super(NewsAdmin, self).formfield_for_dbfield(db_field, **kwargs)
-		if db_field.name == 'long_description':
-			return forms.CharField(widget=TinyMCE(
-			attrs={'cols': 80, 'rows': 30}))
-		return field
 
 		
 
 class CaseStudyAdmin(admin.ModelAdmin):
 	exclude=('slug',)
-	list_display = ('id','title','slug')
+	list_display = ('id','title','program','slug','tags')
 	def formfield_for_dbfield(self, db_field, **kwargs):
 		field = super(CaseStudyAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 		if db_field.name == 'long_description':
@@ -44,7 +33,7 @@ class CaseStudyAdmin(admin.ModelAdmin):
 
 class NewsAdmin(admin.ModelAdmin):
 	exclude=('slug',)
-	list_display = ('id','title','slug','tags')
+	list_display = ('id','title','program','slug','tags')
 	def formfield_for_dbfield(self, db_field, **kwargs):
 		field = super(NewsAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 		if db_field.name == 'long_description':
@@ -54,7 +43,7 @@ class NewsAdmin(admin.ModelAdmin):
 
 class EventsAdmin(admin.ModelAdmin):
 	exclude=('slug',)
-	list_display = ('id','title','slug')
+	list_display = ('id','title','program','slug','tags')
 	def formfield_for_dbfield(self, db_field, **kwargs):
 		field = super(EventsAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 		if db_field.name == 'long_description':
@@ -86,7 +75,7 @@ class ProgramAdmin(admin.ModelAdmin):
 	
 
 class ResourceAdmin(admin.ModelAdmin):
-	list_display = ('id','title','slug')
+	list_display = ('id','title','program','slug','tags')
 	exclude=('slug',)
 	def formfield_for_dbfield(self, db_field, **kwargs):
 		field = super(ResourceAdmin, self).formfield_for_dbfield(db_field, **kwargs)
