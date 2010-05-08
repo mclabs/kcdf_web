@@ -20,6 +20,7 @@ urlpatterns+=patterns('girlchild.views',
 		(r'^news/$', 'news',{},'news'),
 		(r'^resource/(?P<slug>[^\.^/]+)/$', 'resource_detail',{},'resource'),
 		(r'^resource-center/$', 'resources',{},'resource-center'),
+		(r'^page/about-girlchild/$', 'page',{},'about-girlchild'),
 
 
 )

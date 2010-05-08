@@ -21,6 +21,7 @@ urlpatterns+=patterns('ustawi.views',
 		(r'^resource/(?P<slug>[^\.^/]+)/$', 'resource_detail',{},'resource'),
 		(r'^events/(?P<slug>[^\.^/]+)/$', 'events_detail',{},'events'),
 		(r'^events/$', 'events',{},'events'),
+		(r'^page/about-ustawi/$', 'page',{},'about-ustawi'),
 
 
 )

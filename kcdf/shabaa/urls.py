@@ -23,6 +23,7 @@ urlpatterns+=patterns('shabaa.views',
 		(r'^resource-center/$', 'resources',{},'resource-center'),
 		(r'^events/(?P<slug>[^\.^/]+)/$', 'events_detail',{},'events'),
 		(r'^events/$', 'events',{},'events'),
+		(r'^page/about-shabaa/$', 'page',{},'about-shabaa'),
 
 
 )

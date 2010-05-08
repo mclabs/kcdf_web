@@ -12,9 +12,14 @@ def index (request):
 	events=Events.objects.filter(program=p).order_by("-created_at")[:4]
 	cases=CaseStudy.objects.filter(program=p).order_by("-created_at")[:4]
 	news=News.objects.filter(program=p).order_by("-created_at")[:4]
-
 	context_dict={"news":news,"events":events,"cases":cases}
 	return render_to_response('shabaa/index.html',context_dict,context_instance=RequestContext(request));
+
+def page (request,slug=""):
+	program=Program.objects.get(slug__contains='youth')
+	context_dict={'active_tab': 'page',"program":program}
+	return render_to_response('youth/page.html',context_dict,context_instance=RequestContext(request));
+
 
 def resources(request):
 	p=Program.objects.get(slug__contains='youth')
