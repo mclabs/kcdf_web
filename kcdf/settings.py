@@ -70,9 +70,9 @@ HOST_MIDDLEWARE_URLCONF_MAP={
 			    "kcdf.or.ke":"kcdf.website.urls",
 			    "ustawi.kcdf.or.ke":"kcdf.ustawi.urls",
 			    "shabaa.kcdf.or.ke":"kcdf.shabaa.urls",
-			    "ecd.kcdf.or.ke":"ecd.shabaa.urls",
-			    "girlchild.kcdf.or.ke":"girlchild.shabaa.urls",
-			    "education.kcdf.or.ke":"education.shabaa.urls",
+			    "ecd.kcdf.or.ke":"kcdf.ecf.urls",
+			    "girlchild.kcdf.or.ke":"kcdf.girlchild.urls",
+			    "education.kcdf.or.ke":"kcdf.education.urls",
 
 }
 
