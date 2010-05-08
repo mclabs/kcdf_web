@@ -97,7 +97,6 @@ class ResourceAdmin(admin.ModelAdmin):
 
 
 class HeadlineAdmin(admin.ModelAdmin):
-	form = AdminImageForm
 	list_display = ('id','title','slug')
 	exclude=('slug',)
 

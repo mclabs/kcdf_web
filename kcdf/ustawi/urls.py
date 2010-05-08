@@ -1,4 +1,12 @@
 from django.conf.urls.defaults import *
+urlpatterns= patterns('django.contrib.flatpages.views',
+    url(r'^rss/$', 'flatpage', {'url': '/rss/'}, name='rss'),
+    url(r'^donate/$', 'flatpage', {'url': '/donate/'}, name='donate'),
+    url(r'^ustawi-partners/$', 'flatpage', {'url': '/ustawi-partners/'}, name='partners'),
+    url(r'^take-action-ustawi/$', 'flatpage', {'url': '/take-action-ustawi/'}, name='take-action'),
+
+)
+
 urlpatterns=patterns('ustawi.views',
 		(r'^$', 'index',{},'home'),
 		(r'^case-studies/$', 'case_studies',{},'case-studies'),

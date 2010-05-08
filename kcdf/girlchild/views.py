@@ -11,7 +11,7 @@ def index (request):
 	p=Program.objects.get(slug__contains='girlchild')
 	news=News.objects.filter(program=p).order_by("-created_at")[:4]
 	context_dict={"news":news}
-	return render_to_response('girlchild/index.html',{},context_dict,context_instance=RequestContext(request));
+	return render_to_response('girlchild/index.html',context_dict,context_instance=RequestContext(request));
 
 def resources(request):
 	resources=Resource.objects.all().order_by("-created_at")
