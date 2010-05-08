@@ -9,6 +9,7 @@ from django.template import RequestContext
 
 def index (request):
 	p=Program.objects.get(slug__contains='ustawi')
+	news=News.objects.filter(program=p).order_by("-created_at")[:4]
 	events=Events.objects.filter(program=p).order_by("-created_at")[:4]
 	cases=CaseStudy.objects.filter(program=p).order_by("-created_at")
 	context_dict={"news":news,"events":events,"cases":cases}
