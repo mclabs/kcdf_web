@@ -14,7 +14,7 @@ def index (request):
 	
 def page (request,slug):
 	page = get_object_or_404(Page, slug=slug)
-	context_dict={'active_tab': 'programs',"page":page}
+	context_dict={'active_tab': 'page',"page":page}
 	return render_to_response('website/page.html',context_dict,context_instance=RequestContext(request));
 
 	
@@ -26,7 +26,7 @@ def resources(request):
 
 def resource_detail(request,slug):
 	resource = get_object_or_404(Resource, slug=slug)
-	context_dict={'active_tab': 'news',"resource":resource}
+	context_dict={'active_tab': 'resource-center',"resource":resource}
 	return render_to_response('website/resource_detail.html',context_dict,context_instance=RequestContext(request));
 
 
