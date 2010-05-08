@@ -88,6 +88,7 @@ MIDDLEWARE_CLASSES = (
 
 
 ROOT_URLCONF = 'kcdf.urls'
+HOST="http://kcdf.or.ke/"
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
