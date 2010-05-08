@@ -1,5 +1,11 @@
 from django.conf.urls.defaults import *
-urlpatterns= patterns('django.contrib.flatpages.views',
+urlpatterns=patterns('',
+		(r'^search/', include('haystack.urls')),
+
+	)
+
+
+urlpatterns+= patterns('django.contrib.flatpages.views',
     url(r'^rss/$', 'flatpage', {'url': '/rss/'}, name='rss'),
     url(r'^donate/$', 'flatpage', {'url': '/donate/'}, name='donate'),
     url(r'^ecd-partners/$', 'flatpage', {'url': '/ecd-partners/'}, name='partners'),

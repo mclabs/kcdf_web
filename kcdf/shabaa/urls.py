@@ -21,6 +21,8 @@ urlpatterns+=patterns('shabaa.views',
 		(r'^news/$', 'news',{},'news'),
 		(r'^resource/(?P<slug>[^\.^/]+)/$', 'resource_detail',{},'resource'),
 		(r'^resource-center/$', 'resources',{},'resource-center'),
+		(r'^events/(?P<slug>[^\.^/]+)/$', 'events_detail',{},'events'),
+		(r'^events/$', 'events',{},'events'),
 
 
 )
