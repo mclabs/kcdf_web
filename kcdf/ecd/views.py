@@ -10,7 +10,8 @@ from django.template import RequestContext
 def index (request):
 	p=Program.objects.get(slug__contains='childhood')
 	news=News.objects.filter(program=p).order_by("-created_at")[:4]
-	return render_to_response('ecd/index.html',{},context_instance=RequestContext(request));
+	context_dict={"news":news}
+	return render_to_response('ecd/index.html',{},context_dict,context_instance=RequestContext(request));
 
 def resources(request):
 	resources=Resource.objects.all().order_by("-created_at")
@@ -26,6 +27,7 @@ def resource_detail(request,slug):
 def news(request):
 	p=Program.objects.get(slug__contains='childhood')
 	news=News.objects.filter(program=p).order_by("-created_at")
+	context_dict={'active_tab': 'news',"news":news}
 	return render_to_response('ecd/news.html',context_dict,context_instance=RequestContext(request));
 
 def news_detail(request,slug):
