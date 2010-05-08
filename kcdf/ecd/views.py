@@ -10,11 +10,14 @@ from django.template import RequestContext
 def index (request):
 	p=Program.objects.get(slug__contains='childhood')
 	news=News.objects.filter(program=p).order_by("-created_at")[:4]
-	context_dict={"news":news}
+	events=Events.objects.filter(program=p).order_by("-created_at")[:4]
+	cases=CaseStudy.objects.filter(program=p).order_by("-created_at")
+	context_dict={"news":news,"events":events,"cases":cases}
 	return render_to_response('ecd/index.html',context_dict,context_instance=RequestContext(request));
 
 def resources(request):
-	resources=Resource.objects.all().order_by("-created_at")
+	p=Program.objects.get(slug__contains='childhood')
+	resources=Resource.filter(program=p).order_by("-created_at")
 	context_dict={'active_tab': 'resource-center',"resources":resources}
 	return render_to_response('ecd/resources.html',context_dict,context_instance=RequestContext(request));
 

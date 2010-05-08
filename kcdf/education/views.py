@@ -14,12 +14,14 @@ def index (request):
 	return render_to_response('education/index.html',context_dict,context_instance=RequestContext(request));
 
 def resources(request):
-	resources=Resource.objects.all().order_by("-created_at")
+	p=Program.objects.get(slug__contains='education')
+	resources=Resource.filter(program=p).order_by("-created_at")
 	context_dict={'active_tab': 'resource-center',"resources":resources}
 	return render_to_response('education/resources.html',context_dict,context_instance=RequestContext(request));
 
 def resource_detail(request,slug):
-	resource = get_object_or_404(Resource, slug=slug)
+	p=Program.objects.get(slug__contains='education')
+	resources=Resource.filter(program=p).order_by("-created_at")
 	context_dict={'active_tab': 'resource',"resource":resource}
 	return render_to_response('education/resource_detail.html',context_dict,context_instance=RequestContext(request));
 
