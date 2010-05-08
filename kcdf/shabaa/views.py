@@ -66,4 +66,4 @@ def case_studies (request):
 def casestudy_detail(request,slug):
 	casestudy = get_object_or_404(CaseStudy, slug=slug)
 	context_dict={'active_tab': 'case-studies',"casestudy":casestudy}
-	return render_to_response('website/casestudy_detail.html',context_dict,context_instance=RequestContext(request));
+	return render_to_response('shabaa/casestudy_detail.html',context_dict,context_instance=RequestContext(request));
