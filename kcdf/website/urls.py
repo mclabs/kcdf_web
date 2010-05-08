@@ -20,6 +20,7 @@ urlpatterns=patterns('',
 		(r'^admin/filebrowser/', include('filebrowser.urls')),
 		(r'^tinymce/', include('tinymce.urls')),
 		(r'^grappelli/', include('grappelli.urls')),
+		(r'^search/', include('haystack.urls')),
 
 
 	)
