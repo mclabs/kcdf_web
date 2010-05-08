@@ -35,6 +35,17 @@ def news_detail(request,slug):
 	context_dict={'active_tab': 'news',"news":news}
 	return render_to_response('shabaa/news_detail.html',context_dict,context_instance=RequestContext(request));
 
+def events(request):
+	p=Program.objects.get(slug__contains='youth')
+	events=Events.objects.filter(program=p).order_by("-created_at")
+	context_dict={'active_tab': 'events',"events":events}
+	return render_to_response('shabaa/events.html',context_dict,context_instance=RequestContext(request));
+
+def events_detail(request,slug):
+	events = get_object_or_404(Events, slug=slug)
+	context_dict={'active_tab': 'events',"events":events}
+	return render_to_response('shabaa/events_detail.html',context_dict,context_instance=RequestContext(request));
+
 
 def case_studies (request):
 	p=Program.objects.get(slug__contains='youth')
