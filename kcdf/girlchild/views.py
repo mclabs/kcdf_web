@@ -17,7 +17,7 @@ def index (request):
 
 def resources(request):
 	p=Program.objects.get(slug__contains='girl-child')
-	resources=Resource.filter(program=p).order_by("-created_at")
+	resources=Resource.objects.filter(program=p).order_by("-created_at")
 	context_dict={'active_tab': 'resource-center',"resources":resources}
 	return render_to_response('girlchild/resources.html',context_dict,context_instance=RequestContext(request));
 

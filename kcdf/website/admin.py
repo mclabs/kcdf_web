@@ -1,7 +1,6 @@
 from django.contrib import admin
 from website.models import *
 from website.forms import AdminImageForm
-
 from django import forms
 from django.core.urlresolvers import reverse
 from django.contrib.flatpages.admin import FlatPageAdmin
