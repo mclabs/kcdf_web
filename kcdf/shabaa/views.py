@@ -10,7 +10,9 @@ from django.template import RequestContext
 def index (request):
 	p=Program.objects.get(slug__contains='youth')
 	events=Events.objects.filter(program=p).order_by("-created_at")[:4]
-	cases=CaseStudy.objects.filter(program=p).order_by("-created_at")
+	cases=CaseStudy.objects.filter(program=p).order_by("-created_at")[:4]
+	news=News.objects.filter(program=p).order_by("-created_at")[:4]
+
 	context_dict={"news":news,"events":events,"cases":cases}
 	return render_to_response('shabaa/index.html',context_dict,context_instance=RequestContext(request));
 
