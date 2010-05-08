@@ -88,7 +88,7 @@ MIDDLEWARE_CLASSES = (
 
 
 ROOT_URLCONF = 'kcdf.urls'
-HOST="http://kcdf.or.ke/"
+HOST="http://kcdf.or.ke"
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -160,6 +160,7 @@ TINYMCE_COMPRESSOR = False
 TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
     'kcdf.website.context_processors.header_context',
     'kcdf.website.context_processors.media_url',
+    'kcdf.website.context_processors.host'
 
 )
 THUMBNAIL_EXTENSION = 'png'
