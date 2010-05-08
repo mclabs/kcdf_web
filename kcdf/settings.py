@@ -95,6 +95,11 @@ TEMPLATE_DIRS = (
 
 )
 
+HAYSTACK_SITECONF = 'kcdf.search_sites'
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_WHOOSH_PATH = '/tmp/whoosh/kcdf_index'
+
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'filebrowser',
@@ -103,6 +108,7 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'django_static',
     'grappelli',
+    'haystack',
     'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

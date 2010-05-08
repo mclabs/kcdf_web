@@ -4,3 +4,5 @@ django-tagging
 sorl-thumbnail
 python-twitter
 django-grappelli
+django-haystack
+whoosh
