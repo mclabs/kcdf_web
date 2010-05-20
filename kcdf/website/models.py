@@ -185,7 +185,7 @@ class Video(models.Model):
 	title=models.CharField(max_length=255)
 	snippet=models.TextField(help_text="short snippet (50) characters")
 	slug=models.SlugField(max_length=255,unique=True)
-	video=model.FileField("Video",upload_to='videos/%Y/%m/%d',help_text="Please convert all videos to FLV format before uploading")
+	video=models.FileField("Video",upload_to='videos/%Y/%m/%d',help_text="Please convert all videos to FLV format before uploading")
 	status=models.CharField("Video Status",max_length=1,default='Active',choices=STATUS,help_text="Set whether this is the active video")
 	def __unicode__ (self):
 		return self.title
