@@ -177,6 +177,32 @@ class Headline(models.Model):
 
 	
 
+class Video(models.Model):
+	STATUS=(
+        ('1', 'Active'),
+        ('0', 'Inactive'),
+	)
+	title=models.CharField(max_length=255)
+	snippet=models.TextField(help_text="short snippet (50) characters")
+	slug=models.SlugField(max_length=255,unique=True)
+	photo=model.FileField("Video",upload_to='videos/%Y/%m/%d',help_text="Supported file format is PNG only!!. Image dimensions 400x250")
+	status=models.CharField("Video Status",max_length=1,default='Active',choices=STATUS,help_text="Set whether this is the active headline")
+	def __unicode__ (self):
+		return self.title
+
+	class Meta:
+		verbose_name="Video"
+		verbose_name_plural="Videos"
+	
+		
+	def save (self):
+		self.slug = slugify(self.title)
+		super(Headline,self).save()
+
+	def get_absolute_url(self):
+		return "/videos/%s/" % self.slug
+
+
 '''Add models here for SMS data which will be populated via web hooks'''
 		
 
