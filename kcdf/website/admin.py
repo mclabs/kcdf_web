@@ -89,6 +89,11 @@ class HeadlineAdmin(admin.ModelAdmin):
 	form = AdminImageForm
 	exclude=('slug',)
 
+class VideoAdmin(admin.ModelAdmin):
+	list_display = ('id','title','slug')
+	exclude=('slug',)
+
+
 admin.site.register(Headline,HeadlineAdmin)
 admin.site.register(Program,ProgramAdmin)
 admin.site.register(Resource,ResourceAdmin)
@@ -99,4 +104,4 @@ admin.site.register(Events,EventsAdmin)
 admin.site.register(Page,PageAdmin)
 admin.site.unregister(FlatPage)
 admin.site.register(FlatPage, TinyMCEFlatPageAdmin)
-admin.site.register(Video)
+admin.site.register(Video,VideoAdmin)
