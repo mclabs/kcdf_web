@@ -21,6 +21,8 @@ urlpatterns+=patterns('girlchild.views',
 		(r'^resource/(?P<slug>[^\.^/]+)/$', 'resource_detail',{},'resource'),
 		(r'^resource-center/$', 'resources',{},'resource-center'),
 		(r'^page/about-girlchild/$', 'page',{},'about-girlchild'),
+		(r'^events/(?P<slug>[^\.^/]+)/$', 'events_detail',{},'events'),
+		(r'^events/$', 'events',{},'events'),
 
 
 )
