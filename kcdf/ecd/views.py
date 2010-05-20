@@ -12,7 +12,7 @@ def index (request):
 	news=News.objects.filter(program=p).order_by("-created_at")[:4]
 	events=Events.objects.filter(program=p).order_by("-created_at")[:4]
 	cases=CaseStudy.objects.filter(program=p).order_by("-created_at")
-	context_dict={"news":news,"events":events,"cases":cases}
+	context_dict={"news":news,"events":events,"cases":cases,"program":p}
 	return render_to_response('ecd/index.html',context_dict,context_instance=RequestContext(request));
 
 def page (request,slug=""):
