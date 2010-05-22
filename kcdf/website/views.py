@@ -74,4 +74,7 @@ def program_details (request,slug):
 	context_dict={'active_tab': 'programs',"program":program}
 	return render_to_response(template,context_dict,context_instance=RequestContext(request));
 
-	
+def videos(request):
+	videos=Video.objects.all().order_by("-created_at")
+	context_dict={'active_tab': 'videos',"events":videos}
+	return render_to_response('website/videos.html',context_dict,context_instance=RequestContext(request));

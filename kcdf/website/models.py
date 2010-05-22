@@ -91,7 +91,7 @@ class BaseResource(models.Model):
 
 
 class CaseStudy(BaseResource):
-	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True)
+	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True,null=True, blank=True)
 
 	class Meta:
 		verbose_name="KCDF Case Study"
@@ -105,7 +105,7 @@ class CaseStudy(BaseResource):
 class Resource(BaseResource):
 	resource_type=models.ForeignKey(ResourceType,db_index=True)
 	resource_file=models.FileField(upload_to='resource/%Y/%m/%d',blank=True,null=True)
-	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True)
+	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True,null=True, blank=True)
 
 	class Meta:
 		verbose_name="KCDF Resource"
@@ -119,7 +119,7 @@ class Resource(BaseResource):
 
 class News(BaseResource):
 	news_file=models.FileField(upload_to='news/%Y/%m/%d',blank=True,null=True)
-	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True)
+	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True,null=True, blank=True)
 
 	class Meta:
 		verbose_name="KCDF News"
@@ -132,7 +132,7 @@ class News(BaseResource):
 
 class Events(BaseResource):
 	event_doc=models.FileField(upload_to='events/%Y/%m/%d',blank=True,null=True)
-	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True)
+	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True,null=True, blank=True)
 
 	def __unicode__ (self):
 		return self.title
@@ -185,7 +185,8 @@ class Video(models.Model):
 	title=models.CharField(max_length=255)
 	snippet=models.TextField(help_text="short snippet (50) characters")
 	slug=models.SlugField(max_length=255,unique=True)
-	video=models.FileField("Video",upload_to='videos/%Y/%m/%d',help_text="Please convert all videos to FLV format before uploading")
+	video=models.FileField("Video",upload_to='videos/%Y/%m/%d',help_text="Please convert all videos to FLV format before uploading",null=True, blank=True)
+	flvname=models.CharField(max_length=255,unique=True,help_text="name of video including extension e.g. kcdf.flv")
 	status=models.CharField("Video Status",max_length=1,default='Active',choices=STATUS,help_text="Set whether this is the active video")
 	def __unicode__ (self):
 		return self.title
