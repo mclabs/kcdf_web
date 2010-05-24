@@ -151,7 +151,7 @@ class Headline(models.Model):
         ('0', 'Inactive'),
 	)
 	title=models.CharField(max_length=255)
-	snippet=models.TextField(help_text="short snippet (50) characters")
+	snippet=tinymce_models.HTMLField(help_text="short snippet (50) characters")
 	#photo=models.ImageField("Large Image",upload_to='headlines/%Y/%m/%d',help_text="Supported file format is PNG only!!")
 	photo=ThumbnailField("Large Image",upload_to='headlines/%Y/%m/%d',size=(500, 250),help_text="Supported file format is PNG only!!. Image dimensions 400x250")
 	slug=models.SlugField(max_length=255,unique=True)
