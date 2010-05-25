@@ -6,3 +6,4 @@ python-twitter
 django-grappelli
 django-haystack
 whoosh
+django-pagination

@@ -83,6 +83,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
      'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
      'kcdf.multihost.MultiHostMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 
 )
 
@@ -119,6 +120,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.sites',
     'kcdf.website',
+    'pagination',
 
 
     
