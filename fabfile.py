@@ -46,7 +46,7 @@ def setup():
     #sudo('mkdir -p %(path)s; cd %(path)s; virtualenv --no-site-packages .'  % {'path': env.path})
     sudo('mkdir -p %(path)s;'  % {'path': env.path})
 
-    sudo('chown -R %(user)s:%(user)s %(path)s'  % {'user': env.user, 'path': env.path})
+    #sudo('chown -R %(user)s:%(user)s %(path)s'  % {'user': env.user, 'path': env.path})
     run('cd %(path)s; mkdir releases; mkdir packages' % {'path': env.path})
     deploy()
 
