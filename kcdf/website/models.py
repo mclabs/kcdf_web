@@ -182,7 +182,7 @@ class Video(models.Model):
         ('1', 'Active'),
         ('0', 'Inactive'),
 	)
-	title=models.CharField(max_length=255,required=True)
+	title=models.CharField(max_length=255)
 	snippet=models.TextField(help_text="short snippet (50) characters")
 	slug=models.SlugField(max_length=255,unique=True)
 	video=models.FileField("Video",upload_to='videos/%Y/%m/%d',help_text="Please convert all videos to FLV format before uploading",null=True, blank=True)
@@ -204,7 +204,7 @@ class Video(models.Model):
 		return "/videos/%s/" % self.slug
 
 class Downloads(models.Model):
-	title=models.CharField(max_length=255,required=True)
+	title=models.CharField(max_length=255)
 	downloadfile=models.FileField("File",upload_to='uploads/%Y/%m/%d',help_text="select file from local drive")
 	description=models.TextField(help_text="short snippet (50) characters")
 	slug=models.SlugField(max_length=255,unique=True)
