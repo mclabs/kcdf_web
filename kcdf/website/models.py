@@ -182,7 +182,7 @@ class Video(models.Model):
         ('1', 'Active'),
         ('0', 'Inactive'),
 	)
-	title=models.CharField(max_length=255)
+	title=models.CharField(max_length=255,required=True)
 	snippet=models.TextField(help_text="short snippet (50) characters")
 	slug=models.SlugField(max_length=255,unique=True)
 	video=models.FileField("Video",upload_to='videos/%Y/%m/%d',help_text="Please convert all videos to FLV format before uploading",null=True, blank=True)
@@ -203,6 +203,27 @@ class Video(models.Model):
 	def get_absolute_url(self):
 		return "/videos/%s/" % self.slug
 
+class Downloads(models.Model):
+	title=models.CharField(max_length=255,required=True)
+	downloadfile=models.FileField("File",upload_to='downloads/%Y/%m/%d',help_text="select file from local drive")
+	description=models.TextField(help_text="short snippet (50) characters")
+	slug=models.SlugField(max_length=255,unique=True)
+
+	def __unicode__ (self):
+		return self.title
+
+	class Meta:
+		verbose_name="Download"
+		verbose_name_plural="Downloads"
+	
+		
+	def save (self):
+		self.slug = slugify(self.title)
+		super(Video,self).save()
+
+	def get_absolute_url(self):
+		return "/downloads/%s/" % self.slug
+	
 
 '''Add models here for SMS data which will be populated via web hooks'''
 		
