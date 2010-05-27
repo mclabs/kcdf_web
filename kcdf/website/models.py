@@ -219,7 +219,7 @@ class Downloads(models.Model):
 		
 	def save (self):
 		self.slug = slugify(self.title)
-		super(Video,self).save()
+		super(Downloads,self).save()
 
 	def get_absolute_url(self):
 		return "/downloads/%s/" % self.slug
