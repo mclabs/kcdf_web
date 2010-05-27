@@ -205,7 +205,7 @@ class Video(models.Model):
 
 class Downloads(models.Model):
 	title=models.CharField(max_length=255,required=True)
-	downloadfile=models.FileField("File",upload_to='downloads/%Y/%m/%d',help_text="select file from local drive")
+	downloadfile=models.FileField("File",upload_to='uploads/%Y/%m/%d',help_text="select file from local drive")
 	description=models.TextField(help_text="short snippet (50) characters")
 	slug=models.SlugField(max_length=255,unique=True)
 

@@ -23,6 +23,7 @@ urlpatterns+=patterns('education.views',
 		(r'^events/(?P<slug>[^\.^/]+)/$', 'events_detail',{},'events'),
 		(r'^events/$', 'events',{},'events'),
 		(r'^page/about-education/$', 'page',{},'about-education'),
+		(r'^resource-center/$', 'resources',{},'resource-center'),
 
 
 )
