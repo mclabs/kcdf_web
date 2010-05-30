@@ -12,6 +12,7 @@ info_dict = {
 
 feeds = {
     'news': LatestNews,
+	'events':LatestEvents,
 }
 urlpatterns=patterns('',
 		(r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
