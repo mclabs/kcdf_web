@@ -3,14 +3,20 @@ from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
-from kcdf.website.models import News,Program,ResourceType,Resource,Page,CaseStudy,Events,Headline
+from kcdf.website.models import News,Program,ResourceType,Resource,Page,CaseStudy,Events,Headline,Downloads
 from django.views.generic import list_detail
 from django.template import RequestContext
 
 def index (request):
 	news=News.objects.all().order_by("-created_at")[:4]
-	context_dict={"news":news}
+	downloads=Downloads.objects.all().order_by("-id")[:4]
+	context_dict={"news":news,"downloads":downloads}
 	return render_to_response('website/index.html',context_dict,context_instance=RequestContext(request));
+	
+def downloads(request):
+	downloads=Downloads.objects.all().order_by("-id")
+	context_dict={'active_tab': 'page',"downloads":downloads}
+	return render_to_response('website/downloads.html',context_dict,context_instance=RequestContext(request));
 	
 def page (request,slug):
 	page = get_object_or_404(Page, slug=slug)
@@ -78,3 +84,10 @@ def videos(request):
 	videos=Video.objects.all().order_by("-created_at")
 	context_dict={'active_tab': 'videos',"events":videos}
 	return render_to_response('website/videos.html',context_dict,context_instance=RequestContext(request));
+
+def video_details (request,slug):
+	video = get_object_or_404(Video, slug=slug)
+	template = "website/video_detail.html"
+	context_dict={'active_tab': 'resource',"video":video}
+	return render_to_response(template,context_dict,context_instance=RequestContext(request));
+
