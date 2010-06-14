@@ -234,10 +234,9 @@ class Stats(models.Model):
 	def __unicode__ (self):
 		return self.programs
 
-	def save(self):
-		super(Stats,self).delete()
-		super(Stats,self).save()
-		
+	class Meta:
+		verbose_name="KCDF Stats"
+		verbose_name_plural="KCDF Stats"
 
 '''Add models here for SMS data which will be populated via web hooks'''
 		
