@@ -1,6 +1,6 @@
 from django import template
 register = template.Library()
-from kcdf.website.models import Program,Page,Headline
+from kcdf.website.models import *
 
 
 @register.inclusion_tag("website/partials/subnav.html")
@@ -22,3 +22,8 @@ def slideshow():
 	links=[]
 	headlines=Headline.objects.all().filter(status=1).order_by("-id")[:5]
 	return {"headlines":headlines}
+
+@register.inclusion_tag("website/partials/stats.html")
+def stats():
+	stats=Stats.objects.all().order_by("-id")[:1]
+	return {"stats":stats}
