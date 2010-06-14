@@ -73,6 +73,7 @@ HOST_MIDDLEWARE_URLCONF_MAP={
 			    "ecd.kcdf.or.ke":"kcdf.ecd.urls",
 			    "girlchild.kcdf.or.ke":"kcdf.girlchild.urls",
 			    "education.kcdf.or.ke":"kcdf.education.urls",
+			    "arts.kcdf.or.ke":"kcdf.arts.urls",
 
 }
 
