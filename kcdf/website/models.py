@@ -225,6 +225,20 @@ class Downloads(models.Model):
 		return "/downloads/%s/" % self.slug
 	
 
+class Stats(models.Model):
+	programs=models.CharField(max_length=255,help_text="number of programs")
+	communities=models.CharField(max_length=255)
+	families=models.CharField(max_length=255)
+	people=models.CharField(max_length=255)
+
+	def __unicode__ (self):
+		return self.programs
+
+	def save(self):
+		super(Stats,self).delete()
+		super(Stats,self).save()
+		
+
 '''Add models here for SMS data which will be populated via web hooks'''
 		
 
