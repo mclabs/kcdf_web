@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from website.feeds import LatestNews
+from website.feeds import *
 from website.models import News,Program
 from django.contrib import admin
 admin.autodiscover()
@@ -12,7 +12,7 @@ info_dict = {
 
 feeds = {
     'news': LatestNews,
-	'events':LatestEvents,
+    'events':LatestEvents,
 }
 urlpatterns=patterns('',
 		(r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed',
