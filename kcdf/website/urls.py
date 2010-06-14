@@ -51,5 +51,5 @@ urlpatterns += patterns('kcdf.website.views',
 		(r'^videos/$', 'videos',{},'resource'),
 		(r'^video/(?P<slug>[^\.^/]+)/$', 'video_detail',{},'resource'),
 		(r'^downloads/$', 'downloads',{},'resource'),
-
+		
 )
