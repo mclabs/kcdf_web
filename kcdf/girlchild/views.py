@@ -28,7 +28,7 @@ def resources(request):
 	return render_to_response('girlchild/resources.html',context_dict,context_instance=RequestContext(request));
 
 def resource_detail(request,slug):
-	resources=Resource.filter(program=p).order_by("-created_at")
+	resource = get_object_or_404(Resource, slug=slug)
 	context_dict={'active_tab': 'resource',"resource":resource}
 	return render_to_response('girlchild/resource_detail.html',context_dict,context_instance=RequestContext(request));
 

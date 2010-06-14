@@ -29,7 +29,7 @@ def resources(request):
 
 def resource_detail(request,slug):
 	p=Program.objects.get(slug__contains='arts')
-	resources=Resource.filter(program=p).order_by("-created_at")
+	resources=Resource.objects.filter(program=p).order_by("-created_at")
 	context_dict={'active_tab': 'resource',"resource":resource}
 	return render_to_response('arts/resource_detail.html',context_dict,context_instance=RequestContext(request));
 
