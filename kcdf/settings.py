@@ -122,6 +122,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'kcdf.website',
     'pagination',
+    'kcdf.shabaa',
 
 
     
