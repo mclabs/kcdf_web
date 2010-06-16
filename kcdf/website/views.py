@@ -91,10 +91,6 @@ def video_details (request,slug):
 	context_dict={'active_tab': 'resource',"video":video}
 	return render_to_response(template,context_dict,context_instance=RequestContext(request));
 
-def subscribe (request):
-	template = "website/subscribe.html"
-	context_dict={'active_tab': 'programs'}
-	return render_to_response(template,context_dict,context_instance=RequestContext(request));
 
 
 def rapid(request):

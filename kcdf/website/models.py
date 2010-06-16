@@ -238,6 +238,18 @@ class Stats(models.Model):
 		verbose_name="KCDF Stats"
 		verbose_name_plural="KCDF Stats"
 
+class Subscription(models.Model):
+	name=models.CharField(max_length=255)
+	email=models.CharField(max_length=255)
+	created_at=models.DateTimeField(auto_now_add=True)
+
+	def __unicode__ (self):
+		return self.name
+
+	class Meta:
+		verbose_name="KCDF Newsletter Subscription"
+		verbose_name_plural="KCDF Newsletter Subscriptions"
+
 '''Add models here for SMS data which will be populated via web hooks'''
 		
 
