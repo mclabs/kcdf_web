@@ -14,6 +14,13 @@ class FunderAdmin(admin.ModelAdmin):
 	exclude=('slug',)
 	list_display = ('id','organisation_name')
 
+class IndividualRegistrationAdmin(admin.ModelAdmin):
+	exclude=('slug',)
+	list_display = ('id','organisation_name')
+
+class BusinessRegistrationAdmin(admin.ModelAdmin):
+	exclude=('slug',)
+	list_display = ('id','business_types')
 
 
 admin.site.register(OrganisationCategory)
@@ -22,4 +29,6 @@ admin.site.register(ServiceType)
 admin.site.register(ServiceProvider,ServiceProviderAdmin)
 admin.site.register(LegalDocument,LegalDocumentAdmin)
 admin.site.register(Funder,FunderAdmin)
+admin.site.register(BusinessRegistration,BusinessRegistrationAdmin)
+admin.site.register(IndividualRegistration,IndividualRegistrationAdmin)
 
