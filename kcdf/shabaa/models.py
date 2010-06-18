@@ -53,7 +53,7 @@ class Funder(models.Model):
 		return "/funder/%s/" % self.slug
 
 	def save (self):
-		self.slug = slugify(self.title)
+		self.slug = slugify(self.organisation_name)
 		super(Funder,self).save()
 
 
