@@ -20,7 +20,7 @@ class IndividualRegistrationAdmin(admin.ModelAdmin):
 
 class BusinessRegistrationAdmin(admin.ModelAdmin):
 	exclude=('slug',)
-	list_display = ('id','business_types')
+	list_display = ('id','business_type')
 
 
 admin.site.register(OrganisationCategory)
