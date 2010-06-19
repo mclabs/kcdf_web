@@ -13,7 +13,9 @@ def subnav():
 @register.inclusion_tag("website/partials/pages_subnav.html")
 def pages_subnav(slug):
 	links=[]
-	sub_pages=Page.objects.all().exclude(slug=slug)
+	#sub_pages=Page.objects.all().exclude(slug=slug)
+	page = Page.objects.all().filter(slug=slug)
+	sub_pages=Page.objects.all().filter(parent=page)
 	return {"sub_pages":sub_pages}
 
 
