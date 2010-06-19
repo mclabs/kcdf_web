@@ -20,7 +20,10 @@ def downloads(request):
 	
 def page (request,slug):
 	page = get_object_or_404(Page, slug=slug)
-	context_dict={'active_tab': 'page',"page":page}
+	children=Page.objects.all().filter(parent=page)
+	#pages=Page.objects.all().exclude(slug=slug)
+	pages=Page.objects.all()
+	context_dict={'active_tab': 'page',"page":page,"children":children,"pages":pages}
 	return render_to_response('website/page.html',context_dict,context_instance=RequestContext(request));
 
 	
