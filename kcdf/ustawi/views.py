@@ -46,7 +46,7 @@ def news_detail(request,slug):
 
 
 def events(request):
-	p=Program.objects.get(slug__contains='ustawi')
+	p=Program.objects.get(slug__contains='food-security')
 	events=Events.objects.filter(program=p).order_by("-created_at")
 	context_dict={'active_tab': 'events',"events":events}
 	return render_to_response('ustawi/events.html',context_dict,context_instance=RequestContext(request));
