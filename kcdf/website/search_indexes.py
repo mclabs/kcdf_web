@@ -1,7 +1,7 @@
 from haystack.indexes import *
 from haystack import site
 from website.models import Page,News,Events,Resource,CaseStudy,Program
-
+from shabaa.models import *
 
 class PageIndex(SearchIndex):
     text = CharField(document=True, use_template=True)
@@ -36,6 +36,9 @@ class CaseStudyIndex(SearchIndex):
     long_description = CharField(model_attr='long_description')
     short_description = CharField(model_attr='short_description')
     title = CharField(model_attr='title')
+
+class FundersIndex(SearchIndex):
+    text=CharField(document=True,use_template=True)
 
 site.register(Page, PageIndex)
 site.register(News, NewsIndex)

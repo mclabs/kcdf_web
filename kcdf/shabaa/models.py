@@ -166,6 +166,27 @@ class IndividualRegistration(models.Model):
 		super(IndividualRegistration,self).save()
 
 
+class YouthProgram(models.Model):
+	title=models.CharField(max_length=255,help_text="title of the program")
+	description=models.TextField()
+	geographical_coverage=models.TextField()
+	funding_partners=models.TextField()
+	implementing_partners=models.TextField()
+	contacts=models.TextField()
+
+	def __unicode__ (self):
+		return self.title
+
+	class Meta:
+		verbose_name="Youth Program"
+		verbose_name_plural="Youth Programs"
+
+class Bank(models.Model):
+	name=models.CharField(max_length=255)
+	target=models.CharField(max_length=255)
+	
+
+
 '''
 class License(models.Model):
 	title=models.CharField(max_length=255)
