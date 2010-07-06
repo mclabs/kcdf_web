@@ -4,6 +4,7 @@ from django.template import RequestContext
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from kcdf.website.models import *
+from kcdf.shabaa.models import *
 from django.views.generic import list_detail
 from django.template import RequestContext
 
@@ -68,3 +69,24 @@ def casestudy_detail(request,slug):
 	casestudy = get_object_or_404(CaseStudy, slug=slug)
 	context_dict={'active_tab': 'case-studies',"casestudy":casestudy}
 	return render_to_response('shabaa/casestudy_detail.html',context_dict,context_instance=RequestContext(request));
+
+
+def funders(request):
+	funders=Funder.objects.all().order_by("-id")
+	context_dict={'active_tab': 'resource-center',"funders":funders}
+	return render_to_response('shabaa/funders.html',context_dict,context_instance=RequestContext(request));
+
+def legal_docs(request):
+	legal_docs=LegalDocument.objects.all().order_by("-id")
+	context_dict={'active_tab': 'resource-center',"legal_docs":legal_docs}
+	return render_to_response('shabaa/legal_docs.html',context_dict,context_instance=RequestContext(request));
+
+def indiv_reg(request):
+	individual=IndividualRegistration.objects.all().order_by("-id")
+	context_dict={'active_tab': 'resource-center',"individual":individual}
+	return render_to_response('shabaa/individual.html',context_dict,context_instance=RequestContext(request));
+
+def business_reg(request):
+	business=BusinessRegistration.objects.all().order_by("-id")
+	context_dict={'active_tab': 'resource-center',"business":business}
+	return render_to_response('shabaa/business.html',context_dict,context_instance=RequestContext(request));
