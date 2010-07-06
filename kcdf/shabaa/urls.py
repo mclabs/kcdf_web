@@ -28,6 +28,7 @@ urlpatterns+=patterns('shabaa.views',
 		(r'^legal-documents/$', 'legal_docs',{},'resource-center'),
 		(r'^individual-registration/$', 'indiv_reg',{},'resource-center'),
 		(r'^business-registration/$', 'business_reg',{},'resource-center'),
+		(r'^service-providers/$', 'service_prov',{},'resource-center'),
 
 
 )

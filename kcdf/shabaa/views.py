@@ -90,3 +90,9 @@ def business_reg(request):
 	business=BusinessRegistration.objects.all().order_by("-id")
 	context_dict={'active_tab': 'resource-center',"business":business}
 	return render_to_response('shabaa/business.html',context_dict,context_instance=RequestContext(request));
+
+
+def service_prov(request):
+	service=ServiceProvider.objects.all().order_by("-id")
+	context_dict={'active_tab': 'resource-center',"service":service}
+	return render_to_response('shabaa/service.html',context_dict,context_instance=RequestContext(request));
