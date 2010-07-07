@@ -87,7 +87,7 @@ class ServiceProvider(models.Model):
 		verbose_name_plural="Service Providers"
 		
 	def get_absolute_url(self):
-		return "/service/%s/" % self.slug
+		return "/service-provider/%s/" % self.slug
 
 	def save (self):
 		self.slug = slugify(self.organisation_name)
@@ -117,7 +117,7 @@ class LegalDocument(models.Model):
 		verbose_name_plural="Legal Documents"
 		
 	def get_absolute_url(self):
-		return "/legal_document/%s/" % self.slug
+		return "/legal-document/%s/" % self.slug
 
 	def save (self):
 		self.slug = slugify(self.title)
@@ -139,7 +139,7 @@ class BusinessRegistration(models.Model):
 		verbose_name_plural="Business Registrations"
 		
 	def get_absolute_url(self):
-		return "/business_registration/%s/" % self.slug
+		return "/business-registration/%s/" % self.slug
 
 	def save (self):
 		self.slug = slugify(self.business_type)
