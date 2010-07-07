@@ -156,6 +156,9 @@ class IndividualRegistration(models.Model):
 
 	def __unicode__ (self):
 		return self.organisation_name
+
+	def get_absolute_url(self):
+		return "/individual-registration/%s/" % self.slug
 	
 	class Meta:
 		verbose_name="Individual Registration"
@@ -185,6 +188,20 @@ class Bank(models.Model):
 	name=models.CharField(max_length=255)
 	target=models.CharField(max_length=255)
 	
+
+class NationalPark(models.Model):
+	name=models.CharField(max_length=255)
+	climate=models.TextField()
+	description=models.TextField()
+	location=models.CharField(max_length=255)
+	slug=models.SlugField(blank=True,null=True)
+
+	def __unicode__(self):
+		return self.title
+
+	class Meta:
+		verbose_name="National Park"
+		verbose_name_plural="National Parks"
 
 
 '''
