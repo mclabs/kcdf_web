@@ -76,23 +76,52 @@ def funders(request):
 	context_dict={'active_tab': 'resource-center',"funders":funders}
 	return render_to_response('shabaa/funders.html',context_dict,context_instance=RequestContext(request));
 
+
+def funders_detail(request,slug):
+	funder = get_object_or_404(Funder, slug=slug)
+	context_dict={'active_tab': 'resource-center',"funder":funder}
+	return render_to_response('shabaa/funder_detail.html',context_dict,context_instance=RequestContext(request));
+
+
 def legal_docs(request):
 	legal_docs=LegalDocument.objects.all().order_by("-id")
 	context_dict={'active_tab': 'resource-center',"legal_docs":legal_docs}
 	return render_to_response('shabaa/legal_docs.html',context_dict,context_instance=RequestContext(request));
+
+def legal_detail(request,slug):
+	legal = get_object_or_404(LegalDocument, slug=slug)
+	context_dict={'active_tab': 'resource-center',"legal":legal}
+	return render_to_response('shabaa/legal_detail.html',context_dict,context_instance=RequestContext(request));
+
 
 def indiv_reg(request):
 	individual=IndividualRegistration.objects.all().order_by("-id")
 	context_dict={'active_tab': 'resource-center',"individual":individual}
 	return render_to_response('shabaa/individual.html',context_dict,context_instance=RequestContext(request));
 
+def indiv_detail(request,slug):
+	individual = get_object_or_404(IndividualRegistration, slug=slug)
+	context_dict={'active_tab': 'resource-center',"individual":individual}
+	return render_to_response('shabaa/individual_detail.html',context_dict,context_instance=RequestContext(request));
+
+
 def business_reg(request):
 	business=BusinessRegistration.objects.all().order_by("-id")
 	context_dict={'active_tab': 'resource-center',"business":business}
 	return render_to_response('shabaa/business.html',context_dict,context_instance=RequestContext(request));
+
+def business_detail(request,slug):
+	business = get_object_or_404(BusinessRegistration, slug=slug)
+	context_dict={'active_tab': 'resource-center',"business":business}
+	return render_to_response('shabaa/business_detail.html',context_dict,context_instance=RequestContext(request));
 
 
 def service_prov(request):
 	service=ServiceProvider.objects.all().order_by("-id")
 	context_dict={'active_tab': 'resource-center',"service":service}
 	return render_to_response('shabaa/service.html',context_dict,context_instance=RequestContext(request));
+
+def service_detail(request,slug):
+	service = get_object_or_404(ServiceProvider, slug=slug)
+	context_dict={'active_tab': 'resource-center',"service":service}
+	return render_to_response('shabaa/service_detail.html',context_dict,context_instance=RequestContext(request));
