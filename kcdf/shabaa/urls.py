@@ -30,5 +30,10 @@ urlpatterns+=patterns('shabaa.views',
 		(r'^business-registration/$', 'business_reg',{},'resource-center'),
 		(r'^service-providers/$', 'service_prov',{},'resource-center'),
 
+		(r'^funders/(?P<slug>[^\.^/]+)/$', 'funders_detail',{},'resource-center'),
+		(r'^legal-documents/(?P<slug>[^\.^/]+)/$', 'legal_detail',{},'resource-center'),
+		(r'^individual-registration/(?P<slug>[^\.^/]+)/$', 'indiv_detail',{},'resource-center'),
+		(r'^business-registration/(?P<slug>[^\.^/]+)/$', 'business_detail',{},'resource-center'),
+		(r'^service-providers/(?P<slug>[^\.^/]+)/$', 'service_detail',{},'resource-center'),
 
 )
