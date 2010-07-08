@@ -84,7 +84,7 @@ def program_details (request,slug):
 	return render_to_response(template,context_dict,context_instance=RequestContext(request));
 
 def videos(request):
-	videos=Video.objects.all().order_by("-created_at")
+	videos=Video.objects.all().order_by("-id")
 	context_dict={'active_tab': 'videos',"events":videos}
 	return render_to_response('website/videos.html',context_dict,context_instance=RequestContext(request));
 
