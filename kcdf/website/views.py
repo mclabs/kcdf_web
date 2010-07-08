@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
-from kcdf.website.models import News,Program,ResourceType,Resource,Page,CaseStudy,Events,Headline,Downloads
+from kcdf.website.models import *
 from django.views.generic import list_detail
 from django.template import RequestContext
 
