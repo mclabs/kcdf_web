@@ -187,7 +187,14 @@ class YouthProgram(models.Model):
 class Bank(models.Model):
 	name=models.CharField(max_length=255)
 	target=models.CharField(max_length=255)
-	
+
+	def __unicode__(self):
+		return self.title
+
+	class Meta:
+		verbose_name="Bank"
+		verbose_name_plural="Banks"
+
 
 class NationalPark(models.Model):
 	name=models.CharField(max_length=255)

@@ -85,19 +85,19 @@ def program_details (request,slug):
 
 def videos(request):
 	videos=Video.objects.all().order_by("-id")
-	context_dict={'active_tab': 'videos',"events":videos}
+	context_dict={'active_tab': 'resource-center',"events":videos}
 	return render_to_response('website/videos.html',context_dict,context_instance=RequestContext(request));
 
 def video_details (request,slug):
 	video = get_object_or_404(Video, slug=slug)
 	template = "website/video_detail.html"
-	context_dict={'active_tab': 'resource',"video":video}
+	context_dict={'active_tab': 'resource-center',"video":video}
 	return render_to_response(template,context_dict,context_instance=RequestContext(request));
 
 def download_details (request,slug):
 	download = get_object_or_404(Downloads, slug=slug)
 	template = "website/download_detail.html"
-	context_dict={'active_tab': 'resource',"download":download}
+	context_dict={'active_tab': 'resource-center',"download":download}
 	return render_to_response(template,context_dict,context_instance=RequestContext(request));
 
 

@@ -31,4 +31,5 @@ admin.site.register(LegalDocument,LegalDocumentAdmin)
 admin.site.register(Funder,FunderAdmin)
 admin.site.register(BusinessRegistration,BusinessRegistrationAdmin)
 admin.site.register(IndividualRegistration,IndividualRegistrationAdmin)
+admin.site.register(YouthProgram,YouthProgramAdmin)
 
