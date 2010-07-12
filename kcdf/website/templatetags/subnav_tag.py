@@ -14,7 +14,7 @@ def subnav():
 def pages_subnav(slug):
 	links=[]
 	#sub_pages=Page.objects.all().exclude(slug=slug)
-	page = Page.objects.all().filter(slug=slug)
+	page = Page.objects.all().filter(slug__contains=slug)
 	sub_pages=Page.objects.all().filter(parent=page)
 	return {"sub_pages":sub_pages}
 
