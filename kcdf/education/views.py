@@ -17,7 +17,9 @@ def index (request):
 
 def page (request,slug=""):
 	program=Program.objects.get(slug__contains='education')
-	context_dict={'active_tab': 'page',"program":program}
+	page=Page.objects.get(slug__contains='about-education')
+	children=Page.objects.all().filter(parent=page)
+	context_dict={'active_tab': 'about-education',"program":program,"children":children}
 	return render_to_response('education/page.html',context_dict,context_instance=RequestContext(request));
 
 

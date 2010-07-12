@@ -17,8 +17,20 @@ def index (request):
 
 def page (request,slug=""):
 	program=Program.objects.get(slug__contains='arts')
-	context_dict={'active_tab': 'page',"program":program}
+	page=Page.objects.get(slug__contains='about-arts')
+	children=Page.objects.all().filter(parent=page)
+	context_dict={'active_tab': 'about-arts',"program":program,"children":children}
 	return render_to_response('arts/page.html',context_dict,context_instance=RequestContext(request));
+
+
+def inner_page (request,slug=""):
+	page = get_object_or_404(Page, slug=slug)
+	children=Page.objects.all().filter(parent=page)
+	#pages=Page.objects.all().exclude(slug=slug)
+	pages=Page.objects.all()
+	context_dict={'active_tab': 'about-arts',"page":page,"children":children,"pages":pages}
+	return render_to_response('arts/inner_page.html',context_dict,context_instance=RequestContext(request));
+
 
 
 def resources(request):
