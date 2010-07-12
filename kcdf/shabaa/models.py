@@ -210,6 +210,10 @@ class NationalPark(models.Model):
 		verbose_name="National Park"
 		verbose_name_plural="National Parks"
 
+	def save (self):
+		self.slug = slugify(self.name)
+		super(NationalPark,self).save()
+
 
 '''
 class License(models.Model):

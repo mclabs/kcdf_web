@@ -22,6 +22,14 @@ class BusinessRegistrationAdmin(admin.ModelAdmin):
 	exclude=('slug',)
 	list_display = ('id','business_type')
 
+class YouthProgramAdmin(admin.ModelAdmin):
+	list_display = ('id','title')
+
+
+class NationalParkAdmin(admin.ModelAdmin):
+	exclude=('slug',)
+	list_display = ('id','name')
+
 
 admin.site.register(OrganisationCategory)
 admin.site.register(OrganisationType)
@@ -32,4 +40,5 @@ admin.site.register(Funder,FunderAdmin)
 admin.site.register(BusinessRegistration,BusinessRegistrationAdmin)
 admin.site.register(IndividualRegistration,IndividualRegistrationAdmin)
 admin.site.register(YouthProgram,YouthProgramAdmin)
+admin.site.register(NationalPark,NationalParkAdmin)
 
