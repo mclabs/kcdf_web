@@ -119,8 +119,8 @@ class Resource(BaseResource):
 
 
 class News(BaseResource):
-	news_file=models.FileField(upload_to='news/%Y/%m/%d',blank=True,null=True)
 	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True,null=True, blank=True)
+	news_file=ThumbnailField("Large Image",upload_to='news/%Y/%m/%d',size=(500, 250),help_text="Supported file format is PNG only!!. Image dimensions 400x250",blank=True,null=True)
 
 	class Meta:
 		verbose_name="KCDF News"
