@@ -20,6 +20,14 @@ def page (request,slug=""):
 	context_dict={'active_tab': 'page',"program":program}
 	return render_to_response('girlchild/page.html',context_dict,context_instance=RequestContext(request));
 
+def inner_page (request,slug=""):
+	page = get_object_or_404(Page, slug=slug)
+	children=Page.objects.all().filter(parent=page)
+	#pages=Page.objects.all().exclude(slug=slug)
+	pages=Page.objects.all()
+	context_dict={'active_tab': 'about-girlchild',"page":page,"children":children,"pages":pages}
+	return render_to_response('girlchild/inner_page.html',context_dict,context_instance=RequestContext(request));
+
 
 def resources(request):
 	p=Program.objects.get(slug__contains='girl-child')

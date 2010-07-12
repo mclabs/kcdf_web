@@ -21,6 +21,15 @@ def page (request,slug=""):
 	return render_to_response('ecd/page.html',context_dict,context_instance=RequestContext(request));
 
 
+def inner_page (request,slug=""):
+	page = get_object_or_404(Page, slug=slug)
+	children=Page.objects.all().filter(parent=page)
+	#pages=Page.objects.all().exclude(slug=slug)
+	pages=Page.objects.all()
+	context_dict={'active_tab': 'about-ecd',"page":page,"children":children,"pages":pages}
+	return render_to_response('ecd/inner_page.html',context_dict,context_instance=RequestContext(request));
+
+
 def resources(request):
 	p=Program.objects.get(slug__contains='childhood')
 	resources=Resource.objects.filter(program=p).order_by("-created_at")
