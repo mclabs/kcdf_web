@@ -34,6 +34,7 @@ class Page(models.Model):
 
 class Program(models.Model):
 	title=models.CharField(max_length=160,help_text="title of the program")
+	short_description=tinymce_models.HTMLField(help_text="Short Description of the program")
 	description=tinymce_models.HTMLField(help_text="Description of the program")
 	slug=models.SlugField(max_length=255,blank=True)
 
