@@ -24,6 +24,7 @@ urlpatterns+=patterns('education.views',
 		(r'^events/$', 'events',{},'events'),
 		(r'^page/about-education/$', 'page',{},'about-education'),
 		(r'^resource-center/$', 'resources',{},'resource-center'),
+		(r'^page/(?P<slug>[^\.^/]+)/$', 'inner_page',{},'about-education'),
 
 
 )
