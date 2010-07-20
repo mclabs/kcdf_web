@@ -1,0 +1,30 @@
+{% extends "shabaa-inner.html"%}
+{% load pagination_tags %}
+
+{% load breadcrumbs %}
+{%block breadcrumbs%}
+ {% breadcrumb_url 'Home' home %}
+  {% breadcrumb_url 'Resource Directory' resource-center %}
+ {% breadcrumb_url 'Service Providers' resource-center %}
+{%endblock%}
+
+{%block content%}
+<div class="header">
+								<h1>Service Providers</h1>
+							</div>
+								{% autopaginate service 7 %}
+
+	{%for s in service%}
+	<div class="post">
+							<a href="{{s.get_absolute_url}}">{{s.organisation_name}}</a>
+						{{s.description|safe}}
+						</div>
+		
+	{%endfor%}
+	
+														<script type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#publisher=3d4659e6-7785-45b8-9880-455b7bfa84c6&amp;type=website&amp;post_services=email%2Cfacebook%2Ctwitter%2Cgbuzz%2Cmyspace%2Cdigg%2Csms%2Cwindows_live%2Cdelicious%2Cstumbleupon%2Creddit%2Cgoogle_bmarks%2Clinkedin%2Cbebo%2Cybuzz%2Cblogger%2Cyahoo_bmarks%2Cmixx%2Ctechnorati%2Cfriendfeed%2Cpropeller%2Cwordpress%2Cnewsvine"></script>
+														<p>
+{% paginate %}
+</p>
+{%endblock%}
+
