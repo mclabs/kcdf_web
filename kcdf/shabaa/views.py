@@ -135,3 +135,9 @@ def service_detail(request,slug):
 	service = get_object_or_404(ServiceProvider, slug=slug)
 	context_dict={'active_tab': 'resource-center',"service":service}
 	return render_to_response('shabaa/service_detail.html',context_dict,context_instance=RequestContext(request));
+
+def youth_prog(request):
+	youth=YouthProgram.objects.all().order_by("-id")
+	context_dict={'active_tab': 'resource-center',"youth":youth}
+	return render_to_response('shabaa/youth.html',context_dict,context_instance=RequestContext(request));
+

@@ -17,6 +17,8 @@ urlpatterns = patterns('',
     (r'^', include('ustawi.urls')),
     (r'^', include('shabaa.urls')),
     (r'^', include('arts.urls')),
+    (r'^', include('ecd.urls')),
+    (r'^', include('girlchild.urls')),
 
     (r'^grappelli/', include('grappelli.urls')),
     (r'^admin/filebrowser/', include('filebrowser.urls')),

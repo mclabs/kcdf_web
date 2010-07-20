@@ -176,6 +176,7 @@ class YouthProgram(models.Model):
 	funding_partners=models.TextField()
 	implementing_partners=models.TextField()
 	contacts=models.TextField()
+	slug=models.SlugField(max_length=255,unique=True,null=True,blank=True)
 
 	def __unicode__ (self):
 		return self.title
@@ -183,6 +184,11 @@ class YouthProgram(models.Model):
 	class Meta:
 		verbose_name="Youth Program"
 		verbose_name_plural="Youth Programs"
+
+	def save (self):
+		self.slug = slugify(self.title)
+		super(YouthProgram,self).save()
+
 
 class Bank(models.Model):
 	name=models.CharField(max_length=255)

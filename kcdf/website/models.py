@@ -121,6 +121,7 @@ class Resource(BaseResource):
 class News(BaseResource):
 	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True,null=True, blank=True)
 	news_file=ThumbnailField("Large Image",upload_to='news/%Y/%m/%d',size=(500, 250),help_text="Supported file format is PNG only!!. Image dimensions 400x250",blank=True,null=True)
+	news_date=models.DateField(auto_now=False, auto_now_add=False);
 
 	class Meta:
 		verbose_name="KCDF News"
@@ -134,6 +135,7 @@ class News(BaseResource):
 class Events(BaseResource):
 	event_doc=models.FileField(upload_to='events/%Y/%m/%d',blank=True,null=True)
 	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True,null=True, blank=True)
+	event_date=models.DateField(auto_now=False, auto_now_add=False);
 
 	def __unicode__ (self):
 		return self.title
