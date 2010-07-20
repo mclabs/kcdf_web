@@ -11,7 +11,7 @@ def index (request):
 	p=Program.objects.get(slug__contains='arts')
 	news=News.objects.filter(program=p).order_by("-created_at")[:4]
 	events=Events.objects.filter(program=p).order_by("-created_at")[:4]
-	cases=CaseStudy.objects.filter(program=p).order_by("-created_at")
+	cases=CaseStudy.objects.filter(program=p).order_by("-created_at")[:4]
 	context_dict={"news":news,"events":events,"cases":cases,"program":p}
 	return render_to_response('arts/index.html',context_dict,context_instance=RequestContext(request));
 
