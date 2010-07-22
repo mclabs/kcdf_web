@@ -136,6 +136,8 @@ class Events(BaseResource):
 	event_doc=models.FileField(upload_to='events/%Y/%m/%d',blank=True,null=True)
 	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True,null=True, blank=True)
 	event_date=models.DateField(auto_now=False, auto_now_add=False);
+	start_date=models.DateTimeField(auto_now=False, auto_now_add=False);
+	end_date=models.DateTimeField(auto_now=False, auto_now_add=False);
 
 	def __unicode__ (self):
 		return self.title
