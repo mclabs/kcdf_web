@@ -10,7 +10,8 @@ from django.template import RequestContext
 def index (request):
 	news=News.objects.all().order_by("-created_at")[:4]
 	downloads=Downloads.objects.all().order_by("-id")[:4]
-	context_dict={"news":news,"downloads":downloads}
+	stats=Stats.objects.all().order_by("-id")[:1]
+	context_dict={"news":news,"downloads":downloads,"stats":stats}
 	return render_to_response('website/index.html',context_dict,context_instance=RequestContext(request));
 	
 def downloads(request):
