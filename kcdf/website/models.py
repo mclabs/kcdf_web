@@ -235,6 +235,7 @@ class Stats(models.Model):
 	communities=models.CharField(max_length=255)
 	families=models.CharField(max_length=255)
 	people=models.CharField(max_length=255)
+	cash_target=models.CharField(max_length=255,help_text="number of programs")
 
 	def __unicode__ (self):
 		return self.programs
@@ -254,6 +255,18 @@ class Subscription(models.Model):
 	class Meta:
 		verbose_name="KCDF Newsletter Subscription"
 		verbose_name_plural="KCDF Newsletter Subscriptions"
+
+
+class Location(models.Model):
+    name = models.CharField(max_length=100, help_text="Name of location")
+    code = models.CharField(max_length=30, unique=True)
+    latitude  = models.DecimalField(max_digits=8, decimal_places=6, blank=True, null=True, help_text="The physical latitude of this location")
+    longitude = models.DecimalField(max_digits=8, decimal_places=6, blank=True, null=True, help_text="The physical longitude of this location")
+    
+    
+    def __unicode__(self):
+        return self.name
+
 
 '''Add models here for SMS data which will be populated via web hooks'''
 		
