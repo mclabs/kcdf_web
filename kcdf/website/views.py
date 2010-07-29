@@ -4,7 +4,7 @@ from django.template import RequestContext
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from kcdf.website.models import *
-from shabaa.website.models import *
+from kcdf.shabaa.models import *
 from django.views.generic import list_detail
 from django.template import RequestContext
 
