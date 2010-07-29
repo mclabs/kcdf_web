@@ -4,14 +4,16 @@ from django.template import RequestContext
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from kcdf.website.models import *
+from shabaa.website.models import *
 from django.views.generic import list_detail
 from django.template import RequestContext
 
 def index (request):
 	news=News.objects.all().order_by("-created_at")[:4]
 	downloads=Downloads.objects.all().order_by("-id")[:4]
+	shabaa=ProjectPartner.objects.all().order_by("-id")
 	stats=Stats.objects.all().order_by("-id")[:1]
-	context_dict={"news":news,"downloads":downloads,"stats":stats}
+	context_dict={"news":news,"downloads":downloads,"stats":stats,"shabaa":shabaa}
 	return render_to_response('website/index.html',context_dict,context_instance=RequestContext(request));
 	
 def downloads(request):
