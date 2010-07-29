@@ -3,6 +3,7 @@ from tinymce import models as tinymce_models
 from tagging.fields import TagField
 from django.template.defaultfilters import slugify
 from filebrowser.fields import FileBrowseField
+from kcdf.website import Location
 
 class OrganisationCategory(models.Model):
 	title=models.CharField(max_length=255)
@@ -219,6 +220,20 @@ class NationalPark(models.Model):
 	def save (self):
 		self.slug = slugify(self.name)
 		super(NationalPark,self).save()
+
+
+class ProjectPartner(models.Model):
+	name=models.CharField(max_length=255,help_text="Name of project or partner")
+	location=models.ForeignKey(Location,help_text="Location of the project")
+	partnership_year=models.CharField(max_length=50,help_text="year of partnership")
+
+	
+	def __unicode__ (self):
+		return self.name
+
+	class Meta:
+		verbose_name="Shabaa Project Partner"
+		verbose_name_plural="Shabaa Project Partners"
 
 
 '''
