@@ -3,7 +3,7 @@ from tinymce import models as tinymce_models
 from tagging.fields import TagField
 from django.template.defaultfilters import slugify
 from filebrowser.fields import FileBrowseField
-from kcdf.website import Location
+from kcdf.website.models import Location
 
 class OrganisationCategory(models.Model):
 	title=models.CharField(max_length=255)

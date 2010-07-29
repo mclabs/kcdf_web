@@ -1,5 +1,6 @@
 from django.contrib import admin
 from website.models import *
+from shabaa.models import *
 from website.forms import AdminImageForm
 from django import forms
 from django.core.urlresolvers import reverse
@@ -110,3 +111,5 @@ admin.site.register(FlatPage, TinyMCEFlatPageAdmin)
 admin.site.register(Video,VideoAdmin)
 admin.site.register(Downloads,DownloadsAdmin)
 admin.site.register(Stats)
+admin.site.register(Location)
+admin.site.register(ProjectPartner)
