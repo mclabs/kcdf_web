@@ -18,7 +18,7 @@ def index (request):
 	
 def downloads(request):
 	downloads=Downloads.objects.all().order_by("-id")
-	context_dict={'active_tab': 'page',"downloads":downloads}
+	context_dict={'active_tab': 'resource',"downloads":downloads}
 	return render_to_response('website/downloads.html',context_dict,context_instance=RequestContext(request));
 	
 def page (request,slug):
@@ -66,12 +66,12 @@ def events_detail(request,slug):
 
 def case_studies (request):
 	cases=CaseStudy.objects.all().order_by("-created_at")
-	context_dict={'active_tab': 'case-studies',"cases":cases}
+	context_dict={'active_tab': 'resource',"cases":cases}
 	return render_to_response('website/casestudies.html',context_dict,context_instance=RequestContext(request));
 
 def casestudy_detail(request,slug):
 	casestudy = get_object_or_404(CaseStudy, slug=slug)
-	context_dict={'active_tab': 'case-studies',"casestudy":casestudy}
+	context_dict={'active_tab': 'resource',"casestudy":casestudy}
 	return render_to_response('website/casestudy_detail.html',context_dict,context_instance=RequestContext(request));
 
 
