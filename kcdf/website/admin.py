@@ -98,6 +98,11 @@ class DownloadsAdmin(admin.ModelAdmin):
 	list_display = ('id','title','slug')
 	exclude=('slug',)
 
+
+class GranteeAdmin(admin.ModelAdmin):
+	list_display = ('id','name','slug')
+	exclude=('slug',)
+
 admin.site.register(Headline,HeadlineAdmin)
 admin.site.register(Program,ProgramAdmin)
 admin.site.register(Resource,ResourceAdmin)
@@ -113,3 +118,4 @@ admin.site.register(Downloads,DownloadsAdmin)
 admin.site.register(Stats)
 admin.site.register(Location)
 admin.site.register(ProjectPartner)
+admin.site.register(Grantee,GranteeAdmin)
