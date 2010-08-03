@@ -268,6 +268,41 @@ class Location(models.Model):
     def __unicode__(self):
         return self.name
 
+class Grantee(models.Model:
+	PERIOD=(
+        ('2003', '2003'),
+        ('2004', '2004'),
+        ('2005', '2005'),
+        ('2006', '2006'),
+        ('2007', '2007'),
+        ('2008', '2008'),
+        ('2009', '2009'),
+        ('2010', '2010'),
+        ('2011', '2011'),
+
+	)
+
+	name=models.CharField(max_length=255,help_text="Name of the grantee")
+	grantee_period=models.CharField("Grantee Period",max_length=1,default='Active',choices=PERIOD,help_text="Set whether this is the active headline")
+	program=models.ForeignKey(Program,help_text="Program the grantee belongs to",db_index=True,null=True, blank=True)
+	slug=models.SlugField(max_length=255,unique=True)
+
+
+	def __unicode__ (self):
+		return self.name
+
+	class Meta:
+		verbose_name="Grantee"
+		verbose_name_plural="Grantees"
+	
+		
+	def save (self):
+		self.slug = slugify(self.title)
+		super(Grantee,self).save()
+
+	def get_absolute_url(self):
+		return "/grantee/%s/" % self.slug
+
 
 '''Add models here for SMS data which will be populated via web hooks'''
 		
