@@ -268,7 +268,7 @@ class Location(models.Model):
     def __unicode__(self):
         return self.name
 
-class Grantee(models.Model:
+class Grantee(models.Model):
 	PERIOD=(
         ('2003', '2003'),
         ('2004', '2004'),
