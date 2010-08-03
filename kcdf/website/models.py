@@ -209,6 +209,7 @@ class Video(models.Model):
 		return "/videos/%s/" % self.slug
 
 class Downloads(models.Model):
+	download_type=models.ForeignKey(ResourceType,db_index=True)
 	title=models.CharField(max_length=255)
 	downloadfile=models.FileField("File",upload_to='uploads/%Y/%m/%d',help_text="select file from local drive")
 	description=models.TextField(help_text="short snippet (50) characters")
