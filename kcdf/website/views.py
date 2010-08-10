@@ -103,6 +103,12 @@ def download_details (request,slug):
 	context_dict={'active_tab': 'resource-center',"download":download}
 	return render_to_response(template,context_dict,context_instance=RequestContext(request));
 
+def grantees_by_year (request,pYear=""):
+	grantees=Grantee.objects.get(year__contains=pYear)
+	template = "website/grantees_by_year.html"
+	context_dict={'active_tab': 'grantees',"grantees":grantees}
+	return render_to_response(template,context_dict,context_instance=RequestContext(request));
+	
 
 def rapid(request):
 	html="message received"	
