@@ -283,7 +283,7 @@ class Grantee(models.Model):
 	)
 
 	name=models.CharField(max_length=255,help_text="Name of the grantee")
-	grantee_period=models.CharField("Grantee Period",max_length=1,default='2010',choices=PERIOD)
+	grantee_period=models.CharField("Grantee Period",max_length=10,default='2010',choices=PERIOD)
 	program=models.ForeignKey(Program,help_text="Program the grantee belongs to",db_index=True,null=True, blank=True)
 	slug=models.SlugField(max_length=255,unique=True)
 
