@@ -283,7 +283,7 @@ class Grantee(models.Model):
 	)
 
 	name=models.CharField(max_length=255,help_text="Name of the grantee")
-	grantee_period=models.CharField("Grantee Period",max_length=1,default='Active',choices=PERIOD,help_text="Set whether this is the active headline")
+	grantee_period=models.CharField("Grantee Period",max_length=1,default='2010',choices=PERIOD)
 	program=models.ForeignKey(Program,help_text="Program the grantee belongs to",db_index=True,null=True, blank=True)
 	slug=models.SlugField(max_length=255,unique=True)
 
@@ -297,7 +297,7 @@ class Grantee(models.Model):
 	
 		
 	def save (self):
-		self.slug = slugify(self.title)
+		self.slug = slugify(self.name)
 		super(Grantee,self).save()
 
 	def get_absolute_url(self):
