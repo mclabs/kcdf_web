@@ -100,7 +100,7 @@ class DownloadsAdmin(admin.ModelAdmin):
 
 
 class GranteeAdmin(admin.ModelAdmin):
-	list_display = ('id','name','slug')
+	list_display = ('id','name','program','amount','slug')
 	exclude=('slug',)
 
 admin.site.register(Headline,HeadlineAdmin)
