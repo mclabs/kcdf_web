@@ -279,11 +279,13 @@ class Grantee(models.Model):
         ('2009', '2009'),
         ('2010', '2010'),
         ('2011', '2011'),
+        ('2012', '2012'),
 
 	)
 
 	name=models.CharField(max_length=255,help_text="Name of the grantee")
-	grantee_period=models.CharField("Grantee Period",max_length=10,default='2010',choices=PERIOD)
+	start_year=models.CharField("Grantee Period",max_length=10,default='2003',choices=PERIOD)
+	end_year=models.CharField("Grantee Period",max_length=10,default='2003',choices=PERIOD)
 	program=models.ForeignKey(Program,help_text="Program the grantee belongs to",db_index=True,null=True, blank=True)
 	amount=models.CharField(max_length=255,help_text="Amount Grantee Donated")
 	slug=models.SlugField(max_length=255,unique=True)
