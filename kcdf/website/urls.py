@@ -53,6 +53,6 @@ urlpatterns += patterns('kcdf.website.views',
 		(r'^video/(?P<slug>[^\.^/]+)/$', 'video_details',{},'videos'),
 		(r'^downloads/$', 'downloads',{},'downloads'),
 		(r'^downloads/(?P<slug>[^\.^/]+)/$', 'download_details',{},'downloads'),
-		(r'^grantees/(?P<pYear>\d{4})/$', 'grantees_by_year',{},'grantees'),
+		(r'^grantees/(?P<sYear>\d{4})/(?P<eYear>\d{4})/$', 'grantees_by_year',{},'grantees'),
 		
 )
