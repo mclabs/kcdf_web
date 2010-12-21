@@ -288,7 +288,7 @@ class Grantee(models.Model):
 	end_year=models.CharField("Grantee Period",max_length=10,default='2003',choices=PERIOD)
 	program=models.ForeignKey(Program,help_text="Program the grantee belongs to",db_index=True,null=True, blank=True)
 	amount=models.CharField(max_length=255,help_text="Amount Grantee Donated")
-	district=models.ForeignKey(Location,help_text="District they belong to",db_index=True,null=True, blank=True)
+	location=models.ForeignKey(Location,help_text="District they belong to",db_index=True,null=True, blank=True)
 	slug=models.SlugField(max_length=255)
 
 
