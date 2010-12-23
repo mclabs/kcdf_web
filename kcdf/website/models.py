@@ -208,6 +208,29 @@ class Video(models.Model):
 	def get_absolute_url(self):
 		return "/videos/%s/" % self.slug
 
+class Audio(models.Model):
+	
+	title=models.CharField(max_length=255)
+	snippet=models.TextField(help_text="short description about (100) characters")
+	slug=models.SlugField(max_length=255,unique=True)
+	audiofile=models.FileField("Video",upload_to='audios/%Y/%m/%d',help_text="Please convert all audios to mp3",null=True, blank=True)
+	audio_file_name=models.CharField(max_length=255,unique=True,help_text="name of audio file including extension e.g. kcdf.flv")
+	def __unicode__ (self):
+		return self.title
+
+	class Meta:
+		verbose_name="Audio"
+		verbose_name_plural="Audio files"
+	
+		
+	def save (self):
+		self.slug = slugify(self.title)
+		super(Audio,self).save()
+
+	def get_absolute_url(self):
+		return "/audio/%s/" % self.slug
+
+
 class Downloads(models.Model):
 	download_type=models.ForeignKey(ResourceType,db_index=True)
 	title=models.CharField(max_length=255)
