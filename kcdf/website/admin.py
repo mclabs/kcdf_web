@@ -94,6 +94,10 @@ class VideoAdmin(admin.ModelAdmin):
 	list_display = ('id','title','slug')
 	exclude=('slug',)
 
+class AudioAdmin(admin.ModelAdmin):
+	list_display = ('id','title','slug')
+	exclude=('slug',)
+
 class DownloadsAdmin(admin.ModelAdmin):
 	list_display = ('id','title','slug')
 	exclude=('slug',)
@@ -119,3 +123,4 @@ admin.site.register(Stats)
 admin.site.register(Location)
 admin.site.register(ProjectPartner)
 admin.site.register(Grantee,GranteeAdmin)
+admin.site.register(Audio,AudioAdmin)
