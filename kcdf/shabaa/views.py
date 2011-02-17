@@ -7,6 +7,10 @@ from kcdf.website.models import *
 from kcdf.shabaa.models import *
 from django.views.generic import list_detail
 from django.template import RequestContext
+from reportlab.pdfgen import canvas
+from django.http import HttpResponse
+
+
 
 def index (request):
 	p=Program.objects.get(slug__contains='youth')
@@ -141,3 +145,12 @@ def youth_prog(request):
 	context_dict={'active_tab': 'resource-center',"youth":youth}
 	return render_to_response('shabaa/youth.html',context_dict,context_instance=RequestContext(request));
 
+def print_pdf(request,slug):
+	business = get_object_or_404(BusinessRegistration, slug=slug)
+	response=HttpResponse(mimetype='application/pdf')
+	response['Content-Disposition']='attachment;filename=%s'%(slug)
+	p=canvas.Canvas(response)
+	p.drawstring=(100,100,business.business_type)
+	p.showPage()
+	p.save
+	return response
