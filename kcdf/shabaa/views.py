@@ -147,17 +147,27 @@ def youth_prog(request):
 
 def print_pdf(request,slug):
 	from reportlab.lib.units import inch
+	from django.utils.html import strip_tags
+	from reportlab.pdfbase.pdfmetrics import stringWidth
+	from reportlab.rl_config import defaultPageSize
+
+	PAGE_WIDTH  = defaultPageSize[0]
+	PAGE_HEIGHT = defaultPageSize[1]
+
 	
 	funder = get_object_or_404(Funder, slug=slug)
 	response=HttpResponse(mimetype='application/pdf')
 	response['Content-Disposition']='attachment;filename=%s'%(slug)
 	c=canvas.Canvas(response)
-	text=c.beginText()
+	sample_text=strip_tags(funder.eligibility)
+	text_width = stringWidth(sample_text)
+	y = 1050
+	text=c.beginText((PAGE_WIDTH - text_width) / 2.0, y)
 	text.setTextOrigin(inch,2.5*inch)
 	text.setFont("Helvetica",14)
 	text.textLine("Organisation name")
 	text.textLine(funder.organisation_name)
-	text.textLine(funder.eligibility)
+	text.textLines(strip_tags(funder.eligibility))
 	c.drawText(text)
 	c.showPage()
 	c.save()
