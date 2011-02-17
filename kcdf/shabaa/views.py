@@ -146,16 +146,20 @@ def youth_prog(request):
 	return render_to_response('shabaa/youth.html',context_dict,context_instance=RequestContext(request));
 
 def print_pdf(request,slug):
-	business = get_object_or_404(BusinessRegistration, slug=slug)
+	from reportlab.lib.units import inch
+	
+	funder = get_object_or_404(Funder, slug=slug)
 	response=HttpResponse(mimetype='application/pdf')
 	response['Content-Disposition']='attachment;filename=%s'%(slug)
 	c=canvas.Canvas(response)
 	text=c.beginText()
+	text.setTextOrigin(inch,2.5*inch)
 	text.setFont("Helvetica",14)
-	text.textLine(business.business_type)
-	text.textLine(business.requirements)
+	text.setFillGray(0,4)
+	text.textLine("Organisation name")
+	text.textLine(funder.organisation_name)
+	text.textLine(funder.eligibility)
 	c.drawText(text)
-	#c.drawstring=(100,100,business.business_type)
 	c.showPage()
 	c.save()
 	return response
