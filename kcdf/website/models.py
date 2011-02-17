@@ -307,6 +307,7 @@ class Grantee(models.Model):
 	)
 
 	name=models.CharField(max_length=255,help_text="Name of the grantee")
+	description=tinymce_models.HTMLField(help_text="long description of the grantee")
 	start_year=models.CharField("Grantee Period",max_length=10,default='2003',choices=PERIOD)
 	end_year=models.CharField("Grantee Period",max_length=10,default='2003',choices=PERIOD)
 	program=models.ForeignKey(Program,help_text="Program the grantee belongs to",db_index=True,null=True, blank=True)
