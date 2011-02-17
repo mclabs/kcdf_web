@@ -155,7 +155,6 @@ def print_pdf(request,slug):
 	text=c.beginText()
 	text.setTextOrigin(inch,2.5*inch)
 	text.setFont("Helvetica",14)
-	text.setFillGray(0,4)
 	text.textLine("Organisation name")
 	text.textLine(funder.organisation_name)
 	text.textLine(funder.eligibility)
