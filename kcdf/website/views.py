@@ -97,6 +97,18 @@ def video_details (request,slug):
 	context_dict={'active_tab': 'resource-center',"video":video}
 	return render_to_response(template,context_dict,context_instance=RequestContext(request));
 
+
+def audios(request):
+	audios=Audio.objects.all().order_by("-id")
+	context_dict={'active_tab': 'resource-center',"audios":audios}
+	return render_to_response('website/audios.html',context_dict,context_instance=RequestContext(request));
+
+def audio_details (request,slug):
+	audio = get_object_or_404(Audio, slug=slug)
+	template = "website/audio_detail.html"
+	context_dict={'active_tab': 'resource-center',"audio":audio}
+	return render_to_response(template,context_dict,context_instance=RequestContext(request));
+
 def download_details (request,slug):
 	download = get_object_or_404(Downloads, slug=slug)
 	template = "website/download_detail.html"
