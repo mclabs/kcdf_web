@@ -161,7 +161,7 @@ def print_pdf(request,slug):
 	c=canvas.Canvas(response)
 	sample_text=strip_tags(funder.eligibility)
 	text_width = stringWidth(sample_text,"Helvetica",14)
-	y = 1050
+	y = 500
 	text=c.beginText((PAGE_WIDTH - text_width) / 2.0, y)
 	text.setTextOrigin(inch,2.5*inch)
 	text.setFont("Helvetica",14)
