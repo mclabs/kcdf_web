@@ -151,7 +151,7 @@ def print_pdf(request,slug):
 	response['Content-Disposition']='attachment;filename=%s'%(slug)
 	c=canvas.Canvas(response)
 	text=c.beginText()
-	text.setFont("Times Roman",14)
+	text.setFont("Helvetica",14)
 	text.textLine(business.business_type)
 	text.textLine(business.requirements)
 	c.drawText()
