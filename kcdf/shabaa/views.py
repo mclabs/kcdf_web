@@ -154,7 +154,7 @@ def print_pdf(request,slug):
 	text.setFont("Helvetica",14)
 	text.textLine(business.business_type)
 	text.textLine(business.requirements)
-	c.drawText()
+	c.drawText(text)
 	#c.drawstring=(100,100,business.business_type)
 	c.showPage()
 	c.save()
