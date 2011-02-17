@@ -88,7 +88,7 @@ def program_details (request,slug):
 
 def videos(request):
 	videos=Video.objects.all().order_by("-id")
-	context_dict={'active_tab': 'resource-center',"events":videos}
+	context_dict={'active_tab': 'resource-center',"videos":videos}
 	return render_to_response('website/videos.html',context_dict,context_instance=RequestContext(request));
 
 def video_details (request,slug):

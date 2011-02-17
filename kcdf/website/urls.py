@@ -54,5 +54,7 @@ urlpatterns += patterns('kcdf.website.views',
 		(r'^downloads/$', 'downloads',{},'downloads'),
 		(r'^downloads/(?P<slug>[^\.^/]+)/$', 'download_details',{},'downloads'),
 		(r'^grantees/(?P<sYear>\d{4})/(?P<eYear>\d{4})/$', 'grantees_by_year',{},'grantees'),
+		(r'^audios/$', 'audios',{},'audios'),
+		(r'^audio/(?P<slug>[^\.^/]+)/$', 'audio_details',{},'audios'),
 		
 )
