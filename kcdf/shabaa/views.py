@@ -149,8 +149,14 @@ def print_pdf(request,slug):
 	business = get_object_or_404(BusinessRegistration, slug=slug)
 	response=HttpResponse(mimetype='application/pdf')
 	response['Content-Disposition']='attachment;filename=%s'%(slug)
-	p=canvas.Canvas(response)
-	p.drawstring=(100,100,business.business_type)
-	p.showPage()
-	p.save
+	c=canvas.Canvas(response)
+	text=c.beginText()
+	text.setTextOrigin(1*cm,5*cm)
+	text.setFont("Times Roman",14)
+	text.textLine(business.business_type)
+	text.textLine(business.requirements)
+	c.drawText()
+	#c.drawstring=(100,100,business.business_type)
+	c.showPage()
+	c.save()
 	return response
