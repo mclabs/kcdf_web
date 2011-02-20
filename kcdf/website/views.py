@@ -128,7 +128,8 @@ def signup(request):
 		if form.is_valid():
 			return HttpResponseRedirect('/thanks/')
 	else:
-		#form=SubscribeForm()
+		form=NewsletterSubscribeForm()
+	return HttpResponseRedirect('/subscribe/')
 		
 	
 
