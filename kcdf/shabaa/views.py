@@ -145,6 +145,12 @@ def youth_prog(request):
 	context_dict={'active_tab': 'resource-center',"youth":youth}
 	return render_to_response('shabaa/youth.html',context_dict,context_instance=RequestContext(request));
 
+def youth_detail(request,slug):
+	youth = get_object_or_404(YouthProgram, slug=slug)
+	context_dict={'active_tab': 'resource-center',"youth":youth}
+	return render_to_response('shabaa/youth_detail.html',context_dict,context_instance=RequestContext(request));
+
+
 def print_pdf(request,slug):
 	from reportlab.lib.units import inch
 	from django.utils.html import strip_tags
@@ -161,7 +167,7 @@ def print_pdf(request,slug):
 	c=canvas.Canvas(response)
 	sample_text=strip_tags(funder.eligibility)
 	text_width = stringWidth(sample_text,"Helvetica",14)
-	y = 500
+	y = 1050
 	text=c.beginText((PAGE_WIDTH - text_width) / 2.0, y)
 	text.setTextOrigin(inch,2.5*inch)
 	text.setFont("Helvetica",14)
