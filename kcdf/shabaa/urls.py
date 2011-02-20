@@ -31,6 +31,7 @@ urlpatterns+=patterns('shabaa.views',
 		(r'^business-registration/$', 'business_reg',{},'business'),
 		(r'^service-providers/$', 'service_prov',{},'service'),
 		(r'^youth-programs/$', 'youth_prog',{},'youth'),
+		(r'^national-parks/$', 'parks',{},'parks'),
 
 		(r'^funder/(?P<slug>[^\.^/]+)/$', 'funders_detail',{},'funders'),
 		(r'^legal-document/(?P<slug>[^\.^/]+)/$', 'legal_detail',{},'legal'),
@@ -38,6 +39,9 @@ urlpatterns+=patterns('shabaa.views',
 		(r'^business-registration/(?P<slug>[^\.^/]+)/$', 'business_detail',{},'business'),
 		(r'^service-provider/(?P<slug>[^\.^/]+)/$', 'service_detail',{},'service'),
 		(r'^youth-program/(?P<slug>[^\.^/]+)/$', 'youth_detail',{},'youth'),
+		(r'^national-park/(?P<slug>[^\.^/]+)/$', 'park',{},'park'),
 		(r'^pdf/(?P<slug>[^\.^/]+)/$', 'print_pdf',{},'business'),
+
+
 
 )

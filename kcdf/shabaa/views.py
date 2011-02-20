@@ -150,6 +150,16 @@ def youth_detail(request,slug):
 	context_dict={'active_tab': 'resource-center',"youth":youth}
 	return render_to_response('shabaa/youth_detail.html',context_dict,context_instance=RequestContext(request));
 
+def parks(request):
+	park=NationalPark.objects.all().order_by("-id")
+	context_dict={'active_tab': 'resource-center',"park":park}
+	return render_to_response('shabaa/parks.html',context_dict,context_instance=RequestContext(request));
+
+def park(request,slug):
+	park = get_object_or_404(NationalPark, slug=slug)
+	context_dict={'active_tab': 'resource-center',"park":park}
+	return render_to_response('shabaa/park_detail.html',context_dict,context_instance=RequestContext(request));
+
 
 def print_pdf(request,slug):
 	from reportlab.lib.units import inch

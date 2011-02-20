@@ -122,7 +122,14 @@ def grantees_by_year (request,sYear="",eYear=""):
 	context_dict={'active_tab': 'grantees',"grantees":grantees}
 	return render_to_response(template,context_dict,context_instance=RequestContext(request));
 
-	
+def signup(request):
+	if request.method == 'POST':
+		form = NewsletterSubscribeForm(request.POST)
+		if form.is_valid():
+			return HttpResponseRedirect('/thanks/')
+	else:
+		#form=SubscribeForm()
+		
 	
 
 def rapid(request):
