@@ -129,6 +129,7 @@ def subscribe(request):
 	if request.method == 'POST':
 		form = NewsletterSubscribeForm(request.POST)
 		if form.is_valid():
+			form.save()
 			return HttpResponseRedirect('/thanks/')
 	else:
 		form=NewsletterSubscribeForm()
