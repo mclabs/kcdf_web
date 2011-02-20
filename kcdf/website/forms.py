@@ -16,7 +16,7 @@ class AdminImageForm(forms.ModelForm):
     photo = forms.FileField(widget=AdminImageWidget, required=True)
     thumbnail = forms.FileField(widget=AdminImageWidget, required=True)
 
-class NewsletterSubscribeForm(forms.ModelForm):
+class NewsletterSubscribeForm(forms.Form):
 	name=forms.CharField(label="Name",max_length=110,required=True,widget=forms.TextInput(attrs={'class':'long_text'}))
 	email=forms.CharField(label="Email Address",required=True,widget=forms.TextInput(attrs={'class':'long_text'}))
 
