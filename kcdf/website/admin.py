@@ -107,6 +107,9 @@ class GranteeAdmin(admin.ModelAdmin):
 	list_display = ('id','name','program','amount','slug')
 	exclude=('slug',)
 
+class SubscriptionAdmin(admin.ModelAdmin):
+	list_display = ('id','name','email')
+
 admin.site.register(Headline,HeadlineAdmin)
 admin.site.register(Program,ProgramAdmin)
 admin.site.register(Resource,ResourceAdmin)
@@ -124,3 +127,4 @@ admin.site.register(Location)
 admin.site.register(ProjectPartner)
 admin.site.register(Grantee,GranteeAdmin)
 admin.site.register(Audio,AudioAdmin)
+admin.site.register(Subscription,SubscriptionAdmin)
