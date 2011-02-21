@@ -182,6 +182,9 @@ class YouthProgram(models.Model):
 	def __unicode__ (self):
 		return self.title
 
+	def get_absolute_url(self):
+		return "/youth-program/%s/" % self.slug
+
 	class Meta:
 		verbose_name="Youth Program"
 		verbose_name_plural="Youth Programs"
@@ -194,13 +197,21 @@ class YouthProgram(models.Model):
 class Bank(models.Model):
 	name=models.CharField(max_length=255)
 	target=models.CharField(max_length=255)
+	slug=models.SlugField(max_length=255,unique=True,null=True,blank=True)
 
 	def __unicode__(self):
 		return self.name
 
+	def get_absolute_url(self):
+		return "/bank/%s/" % self.slug
+
 	class Meta:
 		verbose_name="Bank"
 		verbose_name_plural="Banks"
+
+	def save (self):
+		self.slug = slugify(self.title)
+		super(Bank,self).save()
 
 
 class NationalPark(models.Model):
@@ -212,6 +223,10 @@ class NationalPark(models.Model):
 
 	def __unicode__(self):
 		return self.name
+
+	def get_absolute_url(self):
+		return "/national-park/%s/" % self.slug
+
 
 	class Meta:
 		verbose_name="National Park"
@@ -227,7 +242,11 @@ class ProjectPartner(models.Model):
 	location=models.ForeignKey(Location,help_text="Location of the project")
 	partnership_year=models.CharField(max_length=50,help_text="year of partnership")
 
+
 	
+	def get_absolute_url(self):
+		return "/partner/%s/" % self.id
+
 	def __unicode__ (self):
 		return self.name
 
