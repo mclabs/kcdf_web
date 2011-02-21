@@ -196,7 +196,7 @@ class Bank(models.Model):
 	target=models.CharField(max_length=255)
 
 	def __unicode__(self):
-		return self.title
+		return self.name
 
 	class Meta:
 		verbose_name="Bank"
@@ -205,13 +205,13 @@ class Bank(models.Model):
 
 class NationalPark(models.Model):
 	name=models.CharField(max_length=255)
-	climate=models.TextField()
-	description=models.TextField()
+	climate=tinymce_models.HTMLField(null=True,blank=True)
+	description=tinymce_models.HTMLField(null=True,blank=True)
 	location=models.CharField(max_length=255)
 	slug=models.SlugField(blank=True,null=True)
 
 	def __unicode__(self):
-		return self.title
+		return self.name
 
 	class Meta:
 		verbose_name="National Park"
