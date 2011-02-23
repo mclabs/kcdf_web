@@ -93,7 +93,8 @@ def funders(request):
 
 def funders_detail(request,slug):
 	funder = get_object_or_404(Funder, slug=slug)
-	context_dict={'active_tab': 'resource-center',"funder":funder}
+	all_funders=Funders.objects.exclude(slug=slug).order("-id")[:5]
+	context_dict={'active_tab': 'resource-center',"funder":funder,"all_funders":all_funders}
 	return render_to_response('shabaa/funder_detail.html',context_dict,context_instance=RequestContext(request));
 
 
