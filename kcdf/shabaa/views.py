@@ -105,7 +105,8 @@ def legal_docs(request):
 
 def legal_detail(request,slug):
 	legal = get_object_or_404(LegalDocument, slug=slug)
-	context_dict={'active_tab': 'resource-center',"legal":legal}
+	all_legal=LegalDocument.objects.exclude(slug=slug).order_by("-id")[:5]
+	context_dict={'active_tab': 'resource-center',"legal":legal,"all_legal":all_legal}
 	return render_to_response('shabaa/legal_detail.html',context_dict,context_instance=RequestContext(request));
 
 
@@ -116,7 +117,8 @@ def indiv_reg(request):
 
 def indiv_detail(request,slug):
 	individual = get_object_or_404(IndividualRegistration, slug=slug)
-	context_dict={'active_tab': 'resource-center',"individual":individual}
+	all_indiv=IndividualRegistration.objects.exclude(slug=slug).order_by("-id")[:5]
+	context_dict={'active_tab': 'resource-center',"individual":individual,"all_indiv":all_indiv}
 	return render_to_response('shabaa/individual_detail.html',context_dict,context_instance=RequestContext(request));
 
 
@@ -127,7 +129,8 @@ def business_reg(request):
 
 def business_detail(request,slug):
 	business = get_object_or_404(BusinessRegistration, slug=slug)
-	context_dict={'active_tab': 'resource-center',"business":business}
+	all_business=BusinessRegistration.objects.exclude(slug=slug).order_by("-id")[:5]
+	context_dict={'active_tab': 'resource-center',"business":business,"all_business":all_business}
 	return render_to_response('shabaa/business_detail.html',context_dict,context_instance=RequestContext(request));
 
 
@@ -138,7 +141,8 @@ def service_prov(request):
 
 def service_detail(request,slug):
 	service = get_object_or_404(ServiceProvider, slug=slug)
-	context_dict={'active_tab': 'resource-center',"service":service}
+	all_service=ServiceProvider.objects.exclude(slug=slug).order_by("-id")[:5]
+	context_dict={'active_tab': 'resource-center',"service":service,"all_service":all_service}
 	return render_to_response('shabaa/service_detail.html',context_dict,context_instance=RequestContext(request));
 
 def youth_prog(request):
@@ -148,7 +152,8 @@ def youth_prog(request):
 
 def youth_detail(request,slug):
 	youth = get_object_or_404(YouthProgram, slug=slug)
-	context_dict={'active_tab': 'resource-center',"youth":youth}
+	all_youth=YouthProgram.objects.exclude(slug=slug).order_by("-id")[:5]
+	context_dict={'active_tab': 'resource-center',"youth":youth,"all_youth":all_youth}
 	return render_to_response('shabaa/youth_detail.html',context_dict,context_instance=RequestContext(request));
 
 def parks(request):
@@ -158,7 +163,8 @@ def parks(request):
 
 def park(request,slug):
 	park = get_object_or_404(NationalPark, slug=slug)
-	context_dict={'active_tab': 'resource-center',"park":park}
+	all_parks=NationalPark.objects.exclude(slug=slug).order_by("-id")[:5]
+	context_dict={'active_tab': 'resource-center',"park":park,"all_parks":all_parks}
 	return render_to_response('shabaa/park_detail.html',context_dict,context_instance=RequestContext(request));
 
 
