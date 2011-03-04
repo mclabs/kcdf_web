@@ -11,7 +11,7 @@ env.project_domain = 'kcdf.or.ke' # Project domain
 
 def production():
     "Use the local virtual server"
-    env.hosts = ['173.203.124.16']
+    env.hosts = ['173.203.124.16:3000']
     env.path = '/home/kcdfweb/webapps/kcdf.or.ke'
     env.user = 'kcdfweb'
     #env.password ='wb56829hef'
