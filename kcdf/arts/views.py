@@ -42,7 +42,7 @@ def resources(request):
 def resource_detail(request,slug):
 	p=Program.objects.get(slug__contains='arts')
 	resources=Resource.objects.filter(program=p).order_by("-created_at")
-	context_dict={'active_tab': 'resource',"resource":resource}
+	context_dict={'active_tab': 'resource',"resource":resources}
 	return render_to_response('arts/resource_detail.html',context_dict,context_instance=RequestContext(request));
 
 
@@ -80,3 +80,11 @@ def casestudy_detail(request,slug):
 	casestudy = get_object_or_404(CaseStudy, slug=slug)
 	context_dict={'active_tab': 'case-studies',"casestudy":casestudy}
 	return render_to_response('arts/casestudy_detail.html',context_dict,context_instance=RequestContext(request));
+
+def grantees_by_year (request,sYear="",eYear=""):
+	p=Program.objects.get(slug__contains='arts')
+	grantees=Grantee.objects.filter(start_year=sYear,end_year=eYear,program=p)
+	template = "arts/grantees_by_year.html"
+	context_dict={'active_tab': 'grantees',"grantees":grantees}
+	return render_to_response(template,context_dict,context_instance=RequestContext(request));
+

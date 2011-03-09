@@ -195,3 +195,16 @@ def print_pdf(request,slug):
 	c.showPage()
 	c.save()
 	return response
+
+def map(request):
+	grantees=Grantee.objects.filter(start_year=sYear,end_year=eYear)
+	template = "shabaa/grantees_map.json"
+	context_dict={'active_tab': 'grantees',"grantees":grantees}
+	return render_to_response(template,context_dict,context_instance=RequestContext(request));
+	
+def grantees_by_year (request,sYear="",eYear=""):
+	p=Program.objects.get(slug__contains='youth')
+	grantees=Grantee.objects.filter(start_year=sYear,end_year=eYear,program=p)
+	template = "shabaa/grantees_by_year.html"
+	context_dict={'active_tab': 'grantees',"grantees":grantees}
+	return render_to_response(template,context_dict,context_instance=RequestContext(request));

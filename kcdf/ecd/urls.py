@@ -24,6 +24,7 @@ urlpatterns+=patterns('ecd.views',
 		(r'^events/$', 'events',{},'events'),
 		(r'^page/about-ecd/$', 'page',{},'about-ecd'),
 		(r'^page/(?P<slug>[^\.^/]+)/$', 'inner_page',{},'about-ecd'),
+		(r'^grantees/(?P<sYear>\d{4})/(?P<eYear>\d{4})/$', 'grantees_by_year',{},'grantees'),
 
 
 )

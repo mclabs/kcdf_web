@@ -25,6 +25,7 @@ urlpatterns+=patterns('arts.views',
 		(r'^page/about-arts/$', 'page',{},'about-arts'),
 		(r'^resource-center/$', 'resources',{},'resource-center'),
 		(r'^page/(?P<slug>[^\.^/]+)/$', 'inner_page',{},'about-arts'),
+		(r'^grantees/(?P<sYear>\d{4})/(?P<eYear>\d{4})/$', 'grantees_by_year',{},'grantees'),
 
 
 )

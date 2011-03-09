@@ -24,6 +24,7 @@ urlpatterns+=patterns('girlchild.views',
 		(r'^events/(?P<slug>[^\.^/]+)/$', 'events_detail',{},'events'),
 		(r'^events/$', 'events',{},'events'),
 		(r'^page/(?P<slug>[^\.^/]+)/$', 'inner_page',{},'about-girlchild'),
+		(r'^grantees/(?P<sYear>\d{4})/(?P<eYear>\d{4})/$', 'grantees_by_year',{},'grantees'),
 
 
 )

@@ -41,6 +41,8 @@ urlpatterns+=patterns('shabaa.views',
 		(r'^youth-program/(?P<slug>[^\.^/]+)/$', 'youth_detail',{},'youth'),
 		(r'^national-park/(?P<slug>[^\.^/]+)/$', 'park',{},'park'),
 		(r'^pdf/(?P<slug>[^\.^/]+)/$', 'print_pdf',{},'business'),
+		(r'^map/$', 'map',{},'business'),
+		(r'^grantees/(?P<sYear>\d{4})/(?P<eYear>\d{4})/$', 'grantees_by_year',{},'grantees'),
 
 
 
