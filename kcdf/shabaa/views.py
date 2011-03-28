@@ -208,3 +208,41 @@ def grantees_by_year (request,sYear="",eYear=""):
 	template = "shabaa/grantees_by_year.html"
 	context_dict={'active_tab': 'grantees',"grantees":grantees}
 	return render_to_response(template,context_dict,context_instance=RequestContext(request));
+
+
+def videos(request):
+	p=Program.objects.get(slug__contains='youth')
+	videos=Video.objects.filter(status__exact='1').order_by("-id")
+	context_dict={'active_tab': 'resource-center',"videos":videos}
+	return render_to_response('shabaa/videos.html',context_dict,context_instance=RequestContext(request));
+
+def video_details (request,slug):
+	video = get_object_or_404(Video, slug=slug)
+	template = "shabaa/video_detail.html"
+	context_dict={'active_tab': 'resource-center',"video":video}
+	return render_to_response(template,context_dict,context_instance=RequestContext(request));
+
+
+def audios(request):
+	p=Program.objects.get(slug__contains='youth')
+	audios=Audio.objects.all().order_by("-id")
+	context_dict={'active_tab': 'resource-center',"audios":audios}
+	return render_to_response('shabaa/audios.html',context_dict,context_instance=RequestContext(request));
+
+def audio_details (request,slug):
+	audio = get_object_or_404(Audio, slug=slug)
+	template = "shabaa/audio_detail.html"
+	context_dict={'active_tab': 'resource-center',"audio":audio}
+	return render_to_response(template,context_dict,context_instance=RequestContext(request));
+
+def downloads(request):
+	p=Program.objects.get(slug__contains='youth')
+	downloads=Downloads.objects.all().order_by("-id")
+	context_dict={'active_tab': 'resource',"downloads":downloads}
+	return render_to_response('shabaa/downloads.html',context_dict,context_instance=RequestContext(request));
+
+def download_details (request,slug):
+	download = get_object_or_404(Downloads, slug=slug)
+	template = "shabaa/download_detail.html"
+	context_dict={'active_tab': 'resource-center',"download":download}
+	return render_to_response(template,context_dict,context_instance=RequestContext(request));

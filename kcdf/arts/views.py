@@ -88,3 +88,40 @@ def grantees_by_year (request,sYear="",eYear=""):
 	context_dict={'active_tab': 'grantees',"grantees":grantees}
 	return render_to_response(template,context_dict,context_instance=RequestContext(request));
 
+
+def videos(request):
+	p=Program.objects.get(slug__contains='arts')
+	videos=Video.objects.filter(status__exact='1').order_by("-id")
+	context_dict={'active_tab': 'resource-center',"videos":videos}
+	return render_to_response('arts/videos.html',context_dict,context_instance=RequestContext(request));
+
+def video_details (request,slug):
+	video = get_object_or_404(Video, slug=slug)
+	template = "arts/video_detail.html"
+	context_dict={'active_tab': 'resource-center',"video":video}
+	return render_to_response(template,context_dict,context_instance=RequestContext(request));
+
+
+def audios(request):
+	p=Program.objects.get(slug__contains='arts')
+	audios=Audio.objects.all().order_by("-id")
+	context_dict={'active_tab': 'resource-center',"audios":audios}
+	return render_to_response('arts/audios.html',context_dict,context_instance=RequestContext(request));
+
+def audio_details (request,slug):
+	audio = get_object_or_404(Audio, slug=slug)
+	template = "arts/audio_detail.html"
+	context_dict={'active_tab': 'resource-center',"audio":audio}
+	return render_to_response(template,context_dict,context_instance=RequestContext(request));
+
+def downloads(request):
+	p=Program.objects.get(slug__contains='arts')
+	downloads=Downloads.objects.all().order_by("-id")
+	context_dict={'active_tab': 'resource',"downloads":downloads}
+	return render_to_response('arts/downloads.html',context_dict,context_instance=RequestContext(request));
+
+def download_details (request,slug):
+	download = get_object_or_404(Downloads, slug=slug)
+	template = "arts/download_detail.html"
+	context_dict={'active_tab': 'resource-center',"download":download}
+	return render_to_response(template,context_dict,context_instance=RequestContext(request));

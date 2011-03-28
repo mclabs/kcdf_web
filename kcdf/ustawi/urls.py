@@ -25,6 +25,12 @@ urlpatterns+=patterns('ustawi.views',
 		(r'^resource-center/$', 'resources',{},'resource-center'),
 		(r'^page/(?P<slug>[^\.^/]+)/$', 'inner_page',{},'about-ustawi'),
 		(r'^grantees/(?P<sYear>\d{4})/(?P<eYear>\d{4})/$', 'grantees_by_year',{},'grantees'),
+		(r'^videos/$', 'videos',{},'videos'),
+		(r'^video/(?P<slug>[^\.^/]+)/$', 'video_details',{},'videos'),
+		(r'^downloads/$', 'downloads',{},'downloads'),
+		(r'^downloads/(?P<slug>[^\.^/]+)/$', 'download_details',{},'downloads'),
+		(r'^audios/$', 'audios',{},'audios'),
+		(r'^audio/(?P<slug>[^\.^/]+)/$', 'audio_details',{},'audios'),
 
 
 )

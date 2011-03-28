@@ -134,7 +134,7 @@ class News(BaseResource):
 
 class Events(BaseResource):
 	event_doc=models.FileField(upload_to='events/%Y/%m/%d',blank=True,null=True)
-	program=models.ForeignKey(Program,help_text="Program the case study belongs to",db_index=True,null=True, blank=True)
+	program=models.ForeignKey(Program,help_text="Program the event belongs to",db_index=True,null=True, blank=True)
 	event_date=models.DateField(auto_now=False, auto_now_add=False);
 	start_date=models.DateTimeField(auto_now=False, auto_now_add=False);
 	end_date=models.DateTimeField(auto_now=False, auto_now_add=False);
@@ -187,6 +187,7 @@ class Video(models.Model):
         ('1', 'Active'),
         ('0', 'Inactive'),
 	)
+	program=models.ForeignKey(Program,help_text="Program the video belongs to",db_index=True,null=True, blank=True)
 	title=models.CharField(max_length=255)
 	snippet=models.TextField(help_text="short snippet (50) characters")
 	slug=models.SlugField(max_length=255,unique=True)
@@ -209,7 +210,7 @@ class Video(models.Model):
 		return "/videos/%s/" % self.slug
 
 class Audio(models.Model):
-	
+	program=models.ForeignKey(Program,help_text="Program the event belongs to",db_index=True,null=True, blank=True)
 	title=models.CharField(max_length=255)
 	snippet=models.TextField(help_text="short description about (100) characters")
 	slug=models.SlugField(max_length=255,unique=True)
@@ -232,6 +233,7 @@ class Audio(models.Model):
 
 
 class Downloads(models.Model):
+	program=models.ForeignKey(Program,help_text="Program the event belongs to",db_index=True,null=True, blank=True)
 	download_type=models.ForeignKey(ResourceType,db_index=True)
 	title=models.CharField(max_length=255)
 	downloadfile=models.FileField("File",upload_to='uploads/%Y/%m/%d',help_text="select file from local drive")

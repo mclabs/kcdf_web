@@ -43,6 +43,12 @@ urlpatterns+=patterns('shabaa.views',
 		(r'^pdf/(?P<slug>[^\.^/]+)/$', 'print_pdf',{},'business'),
 		(r'^map/$', 'map',{},'business'),
 		(r'^grantees/(?P<sYear>\d{4})/(?P<eYear>\d{4})/$', 'grantees_by_year',{},'grantees'),
+		(r'^videos/$', 'videos',{},'videos'),
+		(r'^video/(?P<slug>[^\.^/]+)/$', 'video_details',{},'videos'),
+		(r'^downloads/$', 'downloads',{},'downloads'),
+		(r'^downloads/(?P<slug>[^\.^/]+)/$', 'download_details',{},'downloads'),
+		(r'^audios/$', 'audios',{},'audios'),
+		(r'^audio/(?P<slug>[^\.^/]+)/$', 'audio_details',{},'audios'),
 
 
 
