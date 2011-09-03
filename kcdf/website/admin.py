@@ -21,7 +21,7 @@ class TinyMCEFlatPageAdmin(FlatPageAdmin):
 
 class MainStoryAdmin(admin.ModelAdmin):
 	exclude=('slug',)
-	list_display = ('id','title','slug')
+	list_display = ('id','title')
 	def formfield_for_dbfield(self, db_field, **kwargs):
 		field = super(MainStoryAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 		if db_field.name == 'snippet':
