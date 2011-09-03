@@ -109,7 +109,7 @@ def upload_tar_from_git():
     put('%(release)s.tar' % {'release': env.release}, '%(path)s/packages/' % {'path': env.path})
     run('cd %(path)s/releases/%(release)s && tar xf ../../packages/%(release)s.tar' % {'path': env.path, 'release': env.release})
     #on windows we use del on linux rm
-    local('del %(release)s.tar' % {'release': env.release})
+    local('rm %(release)s.tar' % {'release': env.release})
 
 
 def install_site():
