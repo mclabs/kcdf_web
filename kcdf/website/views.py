@@ -15,7 +15,8 @@ def index (request):
 	downloads=Downloads.objects.all().order_by("-id")[:4]
 	shabaa=ProjectPartner.objects.all().order_by("-id")
 	stats=Stats.objects.all().order_by("-id")[:1]
-	context_dict={"news":news,"downloads":downloads,"stats":stats,"shabaa":shabaa}
+	mainstory=MainStory.objects.filter(status__exact='1')[:1]
+	context_dict={"news":news,"downloads":downloads,"stats":stats,"shabaa":shabaa,"mainstory":mainstory}
 	return render_to_response('website/index.html',context_dict,context_instance=RequestContext(request));
 	
 def downloads(request):
