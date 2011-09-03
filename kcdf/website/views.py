@@ -19,6 +19,12 @@ def index (request):
 	context_dict={"news":news,"downloads":downloads,"stats":stats,"shabaa":shabaa,"mainstory":mainstory}
 	return render_to_response('website/index.html',context_dict,context_instance=RequestContext(request));
 	
+def programgrantees(request,slug):
+	program = get_object_or_404(Program, slug=slug)
+	grantees=Grantee.objects.all().filter(program=program)
+	context_dict={"grantees":grantees,"program":program}
+	return render_to_response('website/grantees.html',context_dict,context_instance=RequestContext(request));
+
 def downloads(request):
 	downloads=Downloads.objects.all().order_by("-id")
 	context_dict={'active_tab': 'resource',"downloads":downloads}
