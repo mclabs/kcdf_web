@@ -339,7 +339,7 @@ class MainStory(models.Model):
         ('0', 'Inactive'),
 	)
 	title=models.CharField(max_length=255)
-	snippet=tinymce_models.HTMLField(help_text="short snippet (50) characters")
+	snippet=tinymce_models.HTMLField(help_text="description of the story")
 	status=models.CharField("Story Status",max_length=1,default='Active',choices=STATUS,help_text="Set whether this is the active story")
 	def __unicode__ (self):
 		return self.title

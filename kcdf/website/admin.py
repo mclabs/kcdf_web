@@ -19,6 +19,15 @@ class TinyMCEFlatPageAdmin(FlatPageAdmin):
 
 	
 
+class MainStoryAdmin(admin.ModelAdmin):
+	exclude=('slug',)
+	list_display = ('id','title','slug')
+	def formfield_for_dbfield(self, db_field, **kwargs):
+		field = super(MainStoryAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+		if db_field.name == 'snippet':
+			return forms.CharField(widget=TinyMCE(
+			attrs={'cols': 80, 'rows': 30}))
+		return field
 		
 
 class CaseStudyAdmin(admin.ModelAdmin):
@@ -128,3 +137,4 @@ admin.site.register(ProjectPartner)
 admin.site.register(Grantee,GranteeAdmin)
 admin.site.register(Audio,AudioAdmin)
 admin.site.register(Subscription,SubscriptionAdmin)
+admin.site.register(MainStory,MainStoryAdmin)
