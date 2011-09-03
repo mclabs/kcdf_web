@@ -123,6 +123,13 @@ def grantees_by_year (request,sYear="",eYear=""):
 	template = "website/grantees_by_year.html"
 	context_dict={'active_tab': 'grantees',"grantees":grantees}
 	return render_to_response(template,context_dict,context_instance=RequestContext(request));
+	
+def grantees(request,slug=""):
+	p=Program.objects.get(slug__contains=slug)
+	grantees=Grantees.objects.filter(program=p).order_by("-created_at")
+	template="website/grantees.html"
+	context_dict={'active_tab': 'grantees',"grantees":grantees}
+	return render_to_response(template,context_dict,context_instance=RequestContext(request));
 
 def subscribe(request):
 	template = "website/subscribe.html"

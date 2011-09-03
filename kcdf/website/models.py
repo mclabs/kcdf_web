@@ -333,6 +333,20 @@ class Grantee(models.Model):
 	def get_absolute_url(self):
 		return "/grantee/%i/" % self.id
 
+class MainStory(models.Model):
+	STATUS=(
+        ('1', 'Active'),
+        ('0', 'Inactive'),
+	)
+	title=models.CharField(max_length=255)
+	snippet=tinymce_models.HTMLField(help_text="short snippet (50) characters")
+	status=models.CharField("Story Status",max_length=1,default='Active',choices=STATUS,help_text="Set whether this is the active story")
+	def __unicode__ (self):
+		return self.title
+
+	class Meta:
+		verbose_name="Main Story"
+		verbose_name_plural="Main Stories"
 
 '''Add models here for SMS data which will be populated via web hooks'''
 		
