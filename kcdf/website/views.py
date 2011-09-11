@@ -21,7 +21,7 @@ def index (request):
 	
 def programgrantees(request,slug):
 	program = get_object_or_404(Program, slug=slug)
-	grantees=Grantee.objects.all().filter(program=program)
+	grantees=Grantee.objects.all().filter(program=program).order_by("-id")
 	context_dict={"grantees":grantees,"program":program}
 	return render_to_response('website/grantees.html',context_dict,context_instance=RequestContext(request));
 
